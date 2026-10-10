@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "MolCalib: benchmarking uncertainty quantification for molecular property prediction"
+type: software
+authors:
+  - given-names: "Venkatalakshman"
+    family-names: "Kalterpa"
+license: MIT

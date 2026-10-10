@@ -218,3 +218,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- MolCalib additions ---
+data/
+cache/
+results/raw/
+*.pt
+*.ckpt
+*.pth
+kaggle.json
+.kaggle/
+*.env
+.ipynb_checkpoints/
+.ruff_cache/

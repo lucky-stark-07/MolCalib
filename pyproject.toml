@@ -1,0 +1,55 @@
+[project]
+name = "molcalib"
+version = "0.0.0"
+description = "Benchmarking uncertainty quantification (deep ensembles, MC dropout, conformal prediction) on scaffold-split TDC ADMET tasks."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "pyarrow",
+    "matplotlib",
+    "rdkit",
+    "pytdc",
+]
+
+[project.optional-dependencies]
+# GNN training stack. Installed with: pdm install -G deep
+deep = [
+    "torch",
+    "chemprop",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+# CPU-only torch for the laptop.
+[[tool.pdm.source]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+include_packages = ["torch"]
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+include_packages = ["*"]
+exclude_packages = ["torch"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
