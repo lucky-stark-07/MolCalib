@@ -1,0 +1,890 @@
+{
+  "git_commit": "94b2d712e46d436d5af9130d07e7ff1f72fbb99b",
+  "runs": {
+    "caco2_wang_seed1": {
+      "n": {
+        "train_fit": 573,
+        "test": 182,
+        "valid": 91,
+        "naive_cal": 64
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.53125,
+      "n_scaffold_groups": {
+        "naive_cal": 56,
+        "test": 72,
+        "train_fit": 292,
+        "valid": 57
+      },
+      "largest_group": {
+        "naive_cal": 5,
+        "test": 44,
+        "train_fit": 42,
+        "valid": 5
+      },
+      "largest_group_frac_of_valid": 0.054945054945054944,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 64.0,
+          "mean": 0.3684,
+          "std": 0.252,
+          "min": 0.0,
+          "25%": 0.1556,
+          "50%": 0.3413,
+          "75%": 0.5502,
+          "max": 0.7792
+        },
+        "valid": {
+          "count": 91.0,
+          "mean": 0.5531,
+          "std": 0.196,
+          "min": 0.0588,
+          "25%": 0.3744,
+          "50%": 0.6364,
+          "75%": 0.715,
+          "max": 0.8293
+        },
+        "test": {
+          "count": 182.0,
+          "mean": 0.5559,
+          "std": 0.1877,
+          "min": 0.0357,
+          "25%": 0.4295,
+          "50%": 0.6055,
+          "75%": 0.7302,
+          "max": 0.8049
+        }
+      }
+    },
+    "caco2_wang_seed2": {
+      "n": {
+        "train_fit": 573,
+        "test": 182,
+        "valid": 91,
+        "naive_cal": 64
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.578125,
+      "n_scaffold_groups": {
+        "naive_cal": 53,
+        "test": 72,
+        "train_fit": 293,
+        "valid": 58
+      },
+      "largest_group": {
+        "naive_cal": 6,
+        "test": 44,
+        "train_fit": 41,
+        "valid": 13
+      },
+      "largest_group_frac_of_valid": 0.14285714285714285,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 64.0,
+          "mean": 0.3476,
+          "std": 0.2128,
+          "min": 0.0,
+          "25%": 0.1624,
+          "50%": 0.3198,
+          "75%": 0.4973,
+          "max": 0.7955
+        },
+        "valid": {
+          "count": 91.0,
+          "mean": 0.5666,
+          "std": 0.1829,
+          "min": 0.1324,
+          "25%": 0.4545,
+          "50%": 0.6,
+          "75%": 0.7133,
+          "max": 0.8308
+        },
+        "test": {
+          "count": 182.0,
+          "mean": 0.5705,
+          "std": 0.1987,
+          "min": 0.011,
+          "25%": 0.4603,
+          "50%": 0.6266,
+          "75%": 0.7302,
+          "max": 0.8247
+        }
+      }
+    },
+    "caco2_wang_seed3": {
+      "n": {
+        "train_fit": 573,
+        "test": 182,
+        "valid": 91,
+        "naive_cal": 64
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.703125,
+      "n_scaffold_groups": {
+        "naive_cal": 56,
+        "test": 72,
+        "train_fit": 301,
+        "valid": 58
+      },
+      "largest_group": {
+        "naive_cal": 6,
+        "test": 44,
+        "train_fit": 41,
+        "valid": 5
+      },
+      "largest_group_frac_of_valid": 0.054945054945054944,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 64.0,
+          "mean": 0.3367,
+          "std": 0.2577,
+          "min": 0.0,
+          "25%": 0.1469,
+          "50%": 0.2627,
+          "75%": 0.6032,
+          "max": 0.7955
+        },
+        "valid": {
+          "count": 91.0,
+          "mean": 0.5232,
+          "std": 0.2128,
+          "min": 0.0606,
+          "25%": 0.3194,
+          "50%": 0.5714,
+          "75%": 0.7111,
+          "max": 0.8387
+        },
+        "test": {
+          "count": 182.0,
+          "mean": 0.5733,
+          "std": 0.2152,
+          "min": 0.011,
+          "25%": 0.4533,
+          "50%": 0.5942,
+          "75%": 0.7957,
+          "max": 0.8333
+        }
+      }
+    },
+    "caco2_wang_seed4": {
+      "n": {
+        "train_fit": 573,
+        "test": 182,
+        "valid": 91,
+        "naive_cal": 64
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.546875,
+      "n_scaffold_groups": {
+        "naive_cal": 55,
+        "test": 72,
+        "train_fit": 300,
+        "valid": 49
+      },
+      "largest_group": {
+        "naive_cal": 5,
+        "test": 44,
+        "train_fit": 42,
+        "valid": 10
+      },
+      "largest_group_frac_of_valid": 0.10989010989010989,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 64.0,
+          "mean": 0.3842,
+          "std": 0.2563,
+          "min": 0.0,
+          "25%": 0.1818,
+          "50%": 0.3513,
+          "75%": 0.6753,
+          "max": 0.8205
+        },
+        "valid": {
+          "count": 91.0,
+          "mean": 0.5161,
+          "std": 0.2088,
+          "min": 0.0635,
+          "25%": 0.3483,
+          "50%": 0.5278,
+          "75%": 0.7282,
+          "max": 0.8421
+        },
+        "test": {
+          "count": 182.0,
+          "mean": 0.5651,
+          "std": 0.1908,
+          "min": 0.0357,
+          "25%": 0.4533,
+          "50%": 0.6082,
+          "75%": 0.7302,
+          "max": 0.8481
+        }
+      }
+    },
+    "caco2_wang_seed5": {
+      "n": {
+        "train_fit": 573,
+        "test": 182,
+        "valid": 91,
+        "naive_cal": 64
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.640625,
+      "n_scaffold_groups": {
+        "naive_cal": 54,
+        "test": 72,
+        "train_fit": 328,
+        "valid": 27
+      },
+      "largest_group": {
+        "naive_cal": 3,
+        "test": 44,
+        "train_fit": 24,
+        "valid": 47
+      },
+      "largest_group_frac_of_valid": 0.5164835164835165,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 64.0,
+          "mean": 0.3825,
+          "std": 0.2414,
+          "min": 0.0,
+          "25%": 0.1775,
+          "50%": 0.3385,
+          "75%": 0.6209,
+          "max": 0.8108
+        },
+        "valid": {
+          "count": 91.0,
+          "mean": 0.5462,
+          "std": 0.198,
+          "min": 0.0635,
+          "25%": 0.4467,
+          "50%": 0.6316,
+          "75%": 0.7032,
+          "max": 0.8182
+        },
+        "test": {
+          "count": 182.0,
+          "mean": 0.5642,
+          "std": 0.1937,
+          "min": 0.0571,
+          "25%": 0.45,
+          "50%": 0.6088,
+          "75%": 0.7302,
+          "max": 0.8265
+        }
+      }
+    },
+    "lipophilicity_astrazeneca_seed1": {
+      "n": {
+        "train_fit": 2646,
+        "test": 840,
+        "valid": 420,
+        "naive_cal": 294
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.5748299319727891,
+      "n_scaffold_groups": {
+        "naive_cal": 245,
+        "test": 480,
+        "train_fit": 1598,
+        "valid": 205
+      },
+      "largest_group": {
+        "naive_cal": 13,
+        "test": 20,
+        "train_fit": 63,
+        "valid": 27
+      },
+      "largest_group_frac_of_valid": 0.06428571428571428,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 294.0,
+          "mean": 0.3642,
+          "std": 0.2044,
+          "min": 0.0,
+          "25%": 0.2118,
+          "50%": 0.3209,
+          "75%": 0.5362,
+          "max": 0.8455
+        },
+        "valid": {
+          "count": 420.0,
+          "mean": 0.4531,
+          "std": 0.1749,
+          "min": 0.0,
+          "25%": 0.3178,
+          "50%": 0.4254,
+          "75%": 0.6195,
+          "max": 0.7692
+        },
+        "test": {
+          "count": 840.0,
+          "mean": 0.4398,
+          "std": 0.1761,
+          "min": 0.0,
+          "25%": 0.3083,
+          "50%": 0.4129,
+          "75%": 0.6,
+          "max": 0.8485
+        }
+      }
+    },
+    "lipophilicity_astrazeneca_seed2": {
+      "n": {
+        "train_fit": 2646,
+        "test": 840,
+        "valid": 420,
+        "naive_cal": 294
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.5272108843537415,
+      "n_scaffold_groups": {
+        "naive_cal": 234,
+        "test": 480,
+        "train_fit": 1557,
+        "valid": 237
+      },
+      "largest_group": {
+        "naive_cal": 6,
+        "test": 20,
+        "train_fit": 70,
+        "valid": 36
+      },
+      "largest_group_frac_of_valid": 0.08571428571428572,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 294.0,
+          "mean": 0.3736,
+          "std": 0.213,
+          "min": 0.0,
+          "25%": 0.1979,
+          "50%": 0.3143,
+          "75%": 0.5563,
+          "max": 0.7826
+        },
+        "valid": {
+          "count": 420.0,
+          "mean": 0.4992,
+          "std": 0.1747,
+          "min": 0.0694,
+          "25%": 0.352,
+          "50%": 0.5375,
+          "75%": 0.6547,
+          "max": 0.8108
+        },
+        "test": {
+          "count": 840.0,
+          "mean": 0.4476,
+          "std": 0.1745,
+          "min": 0.0,
+          "25%": 0.315,
+          "50%": 0.4316,
+          "75%": 0.5968,
+          "max": 0.8485
+        }
+      }
+    },
+    "lipophilicity_astrazeneca_seed3": {
+      "n": {
+        "train_fit": 2646,
+        "test": 840,
+        "valid": 420,
+        "naive_cal": 294
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.5170068027210885,
+      "n_scaffold_groups": {
+        "naive_cal": 258,
+        "test": 480,
+        "train_fit": 1584,
+        "valid": 205
+      },
+      "largest_group": {
+        "naive_cal": 10,
+        "test": 20,
+        "train_fit": 66,
+        "valid": 28
+      },
+      "largest_group_frac_of_valid": 0.06666666666666667,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 294.0,
+          "mean": 0.3792,
+          "std": 0.2007,
+          "min": 0.0,
+          "25%": 0.2177,
+          "50%": 0.3306,
+          "75%": 0.5575,
+          "max": 0.7791
+        },
+        "valid": {
+          "count": 420.0,
+          "mean": 0.4298,
+          "std": 0.1726,
+          "min": 0.0,
+          "25%": 0.3012,
+          "50%": 0.4122,
+          "75%": 0.5696,
+          "max": 0.8108
+        },
+        "test": {
+          "count": 840.0,
+          "mean": 0.4435,
+          "std": 0.1749,
+          "min": 0.0,
+          "25%": 0.3088,
+          "50%": 0.4215,
+          "75%": 0.6,
+          "max": 0.8485
+        }
+      }
+    },
+    "lipophilicity_astrazeneca_seed4": {
+      "n": {
+        "train_fit": 2646,
+        "test": 840,
+        "valid": 420,
+        "naive_cal": 294
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.5170068027210885,
+      "n_scaffold_groups": {
+        "naive_cal": 252,
+        "test": 480,
+        "train_fit": 1551,
+        "valid": 238
+      },
+      "largest_group": {
+        "naive_cal": 7,
+        "test": 20,
+        "train_fit": 69,
+        "valid": 28
+      },
+      "largest_group_frac_of_valid": 0.06666666666666667,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 294.0,
+          "mean": 0.3452,
+          "std": 0.2075,
+          "min": 0.0,
+          "25%": 0.1907,
+          "50%": 0.2981,
+          "75%": 0.5248,
+          "max": 0.7887
+        },
+        "valid": {
+          "count": 420.0,
+          "mean": 0.4533,
+          "std": 0.1773,
+          "min": 0.0312,
+          "25%": 0.3065,
+          "50%": 0.4591,
+          "75%": 0.6129,
+          "max": 0.7826
+        },
+        "test": {
+          "count": 840.0,
+          "mean": 0.4471,
+          "std": 0.1778,
+          "min": 0.0,
+          "25%": 0.3064,
+          "50%": 0.4306,
+          "75%": 0.6006,
+          "max": 0.8485
+        }
+      }
+    },
+    "lipophilicity_astrazeneca_seed5": {
+      "n": {
+        "train_fit": 2646,
+        "test": 840,
+        "valid": 420,
+        "naive_cal": 294
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.5476190476190477,
+      "n_scaffold_groups": {
+        "naive_cal": 256,
+        "test": 480,
+        "train_fit": 1593,
+        "valid": 204
+      },
+      "largest_group": {
+        "naive_cal": 6,
+        "test": 20,
+        "train_fit": 32,
+        "valid": 76
+      },
+      "largest_group_frac_of_valid": 0.18095238095238095,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 294.0,
+          "mean": 0.3618,
+          "std": 0.2124,
+          "min": 0.0,
+          "25%": 0.2008,
+          "50%": 0.3219,
+          "75%": 0.5373,
+          "max": 0.8
+        },
+        "valid": {
+          "count": 420.0,
+          "mean": 0.4712,
+          "std": 0.1764,
+          "min": 0.0,
+          "25%": 0.3291,
+          "50%": 0.4821,
+          "75%": 0.6202,
+          "max": 0.7917
+        },
+        "test": {
+          "count": 840.0,
+          "mean": 0.441,
+          "std": 0.1747,
+          "min": 0.0,
+          "25%": 0.3115,
+          "50%": 0.4129,
+          "75%": 0.6,
+          "max": 0.8485
+        }
+      }
+    },
+    "solubility_aqsoldb_seed1": {
+      "n": {
+        "train_fit": 6287,
+        "test": 1995,
+        "valid": 999,
+        "naive_cal": 699
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.9027181688125894,
+      "n_scaffold_groups": {
+        "naive_cal": 165,
+        "test": 621,
+        "train_fit": 815,
+        "valid": 443
+      },
+      "largest_group": {
+        "naive_cal": 296,
+        "test": 152,
+        "train_fit": 2644,
+        "valid": 49
+      },
+      "largest_group_frac_of_valid": 0.04904904904904905,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 699.0,
+          "mean": 0.3663,
+          "std": 0.2019,
+          "min": 0.0,
+          "25%": 0.2396,
+          "50%": 0.3684,
+          "75%": 0.5,
+          "max": 0.813
+        },
+        "valid": {
+          "count": 999.0,
+          "mean": 0.5456,
+          "std": 0.1594,
+          "min": 0.0,
+          "25%": 0.4608,
+          "50%": 0.5758,
+          "75%": 0.6562,
+          "max": 0.9
+        },
+        "test": {
+          "count": 1995.0,
+          "mean": 0.5506,
+          "std": 0.1405,
+          "min": 0.0,
+          "25%": 0.4694,
+          "50%": 0.56,
+          "75%": 0.6538,
+          "max": 0.8889
+        }
+      }
+    },
+    "solubility_aqsoldb_seed2": {
+      "n": {
+        "train_fit": 6287,
+        "test": 1995,
+        "valid": 999,
+        "naive_cal": 699
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.9084406294706724,
+      "n_scaffold_groups": {
+        "naive_cal": 158,
+        "test": 621,
+        "train_fit": 898,
+        "valid": 367
+      },
+      "largest_group": {
+        "naive_cal": 291,
+        "test": 152,
+        "train_fit": 2649,
+        "valid": 219
+      },
+      "largest_group_frac_of_valid": 0.21921921921921922,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 699.0,
+          "mean": 0.3714,
+          "std": 0.2008,
+          "min": 0.0,
+          "25%": 0.2529,
+          "50%": 0.3902,
+          "75%": 0.5,
+          "max": 0.9231
+        },
+        "valid": {
+          "count": 999.0,
+          "mean": 0.5196,
+          "std": 0.1553,
+          "min": 0.0,
+          "25%": 0.4333,
+          "50%": 0.5405,
+          "75%": 0.633,
+          "max": 0.8125
+        },
+        "test": {
+          "count": 1995.0,
+          "mean": 0.5483,
+          "std": 0.1434,
+          "min": 0.0,
+          "25%": 0.4667,
+          "50%": 0.5588,
+          "75%": 0.6538,
+          "max": 0.8889
+        }
+      }
+    },
+    "solubility_aqsoldb_seed3": {
+      "n": {
+        "train_fit": 6287,
+        "test": 1995,
+        "valid": 999,
+        "naive_cal": 699
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.9298998569384835,
+      "n_scaffold_groups": {
+        "naive_cal": 162,
+        "test": 621,
+        "train_fit": 880,
+        "valid": 397
+      },
+      "largest_group": {
+        "naive_cal": 303,
+        "test": 152,
+        "train_fit": 2637,
+        "valid": 54
+      },
+      "largest_group_frac_of_valid": 0.05405405405405406,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 699.0,
+          "mean": 0.3639,
+          "std": 0.1964,
+          "min": 0.0,
+          "25%": 0.25,
+          "50%": 0.381,
+          "75%": 0.5,
+          "max": 0.8
+        },
+        "valid": {
+          "count": 999.0,
+          "mean": 0.5432,
+          "std": 0.1483,
+          "min": 0.0,
+          "25%": 0.4589,
+          "50%": 0.5667,
+          "75%": 0.65,
+          "max": 0.8462
+        },
+        "test": {
+          "count": 1995.0,
+          "mean": 0.553,
+          "std": 0.1394,
+          "min": 0.0,
+          "25%": 0.4695,
+          "50%": 0.56,
+          "75%": 0.6562,
+          "max": 0.8947
+        }
+      }
+    },
+    "solubility_aqsoldb_seed4": {
+      "n": {
+        "train_fit": 6287,
+        "test": 1995,
+        "valid": 999,
+        "naive_cal": 699
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.927038626609442,
+      "n_scaffold_groups": {
+        "naive_cal": 155,
+        "test": 621,
+        "train_fit": 877,
+        "valid": 399
+      },
+      "largest_group": {
+        "naive_cal": 289,
+        "test": 152,
+        "train_fit": 2651,
+        "valid": 73
+      },
+      "largest_group_frac_of_valid": 0.07307307307307308,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 699.0,
+          "mean": 0.3459,
+          "std": 0.2018,
+          "min": 0.0,
+          "25%": 0.2222,
+          "50%": 0.3529,
+          "75%": 0.4827,
+          "max": 0.8
+        },
+        "valid": {
+          "count": 999.0,
+          "mean": 0.5356,
+          "std": 0.1619,
+          "min": 0.0,
+          "25%": 0.4403,
+          "50%": 0.5588,
+          "75%": 0.6596,
+          "max": 0.8824
+        },
+        "test": {
+          "count": 1995.0,
+          "mean": 0.5467,
+          "std": 0.1441,
+          "min": 0.0,
+          "25%": 0.4651,
+          "50%": 0.5581,
+          "75%": 0.6526,
+          "max": 0.8947
+        }
+      }
+    },
+    "solubility_aqsoldb_seed5": {
+      "n": {
+        "train_fit": 4541,
+        "valid": 2940,
+        "test": 1995,
+        "naive_cal": 504
+      },
+      "scaffold_overlap": {
+        "train_fit|valid": 0,
+        "train_fit|test": 0,
+        "valid|test": 0
+      },
+      "naive_cal_frac_molecules_sharing_scaffold_with_train_fit": 0.8015873015873016,
+      "n_scaffold_groups": {
+        "naive_cal": 232,
+        "test": 621,
+        "train_fit": 1226,
+        "valid": 1
+      },
+      "largest_group": {
+        "naive_cal": 171,
+        "test": 152,
+        "train_fit": 1582,
+        "valid": 2940
+      },
+      "largest_group_frac_of_valid": 1.0,
+      "nn_dist": {
+        "naive_cal": {
+          "count": 504.0,
+          "mean": 0.3744,
+          "std": 0.19,
+          "min": 0.0,
+          "25%": 0.2667,
+          "50%": 0.37,
+          "75%": 0.5,
+          "max": 0.8235
+        },
+        "valid": {
+          "count": 2940.0,
+          "mean": 0.6994,
+          "std": 0.111,
+          "min": 0.2857,
+          "25%": 0.6286,
+          "50%": 0.7037,
+          "75%": 0.7714,
+          "max": 0.963
+        },
+        "test": {
+          "count": 1995.0,
+          "mean": 0.5327,
+          "std": 0.1444,
+          "min": 0.0,
+          "25%": 0.4453,
+          "50%": 0.5405,
+          "75%": 0.6386,
+          "max": 0.8889
+        }
+      }
+    }
+  }
+}
