@@ -1,4 +1,4 @@
-.PHONY: test lint splits audit smoke train evaluate
+.PHONY: setup-cpu kaggle-reqs test lint splits audit smoke train evaluate
 
 test:
 	pdm run pytest
@@ -20,3 +20,10 @@ train:
 
 evaluate:
 	pdm run python scripts/evaluate.py
+
+setup-cpu:
+	pdm install -G deep
+	scripts/install_cpu_torch.sh
+
+kaggle-reqs:
+	scripts/export_kaggle_reqs.sh

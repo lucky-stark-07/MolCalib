@@ -40,3 +40,11 @@ deep group: torch 2.14.1 (+cu130 build, see problems), chemprop 2.2.4, lightning
 ## Open questions
 - TDC endpoint names (`caco2_wang`, `lipophilicity_astrazeneca`, `solubility_aqsoldb`) are unconfirmed, because `import tdc` fails.
 - How to get a CPU-only torch and newer chemprop/PyTDC in the lock.
+
+## Update 2026-10-10 (second pass)
+- **Torch CPU vs GPU:** `torch` is no longer a direct dependency (it comes in via chemprop). The lock holds one plain version (2.14.1). Laptop: `make setup-cpu` runs `pdm install -G deep` then `scripts/install_cpu_torch.sh`, which swaps in `torch==2.14.1+cpu` from download.pytorch.org/whl/cpu (verified: `torch.version.cuda is None`). Kaggle: `make kaggle-reqs` exports `requirements-kaggle.txt` with torch/nvidia/triton lines removed, so Kaggle's preinstalled CUDA torch is kept. Not yet tested on Kaggle.
+- chemprop is now 2.3.1 (was 2.2.4) after relocking with `use_uv=false` (stored in pdm.toml).
+- PyTDC is still 0.4.1 (1.1.15 declares numpy<2, pandas<3, rdkit<2024.3.1). `import tdc` works once `setuptools<81` is added (pkg_resources). Installed source confirms `BenchmarkGroup.get_train_valid_split` and the three endpoint names in tdc/metadata.py. No data download was tried.
+- The PyPI package is `PyTDC`; `pip install tdc` installs an unrelated project.
+- Lock strategy is `inherit_metadata` (needed for `pdm export`).
+- **Check:** `requirements-kaggle.txt` pins `rdkit==2026.3.6` and also `rdkit-pypi==2022.9.5` (a dependency of PyTDC 0.4.1); two packages provide the `rdkit` module, and the local env has a different rdkit build than the earlier 2026.9.1. Not yet resolved.

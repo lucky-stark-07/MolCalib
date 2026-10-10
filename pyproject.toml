@@ -14,12 +14,12 @@ dependencies = [
     "matplotlib",
     "rdkit",
     "pytdc",
+    "setuptools<81",  # PyTDC 0.4.1 imports pkg_resources (removed in setuptools 82)
 ]
 
 [project.optional-dependencies]
-# GNN training stack. Installed with: pdm install -G deep
+# GNN training stack (torch comes in via chemprop). Local CPU torch: make setup-cpu
 deep = [
-    "torch",
     "chemprop",
 ]
 
@@ -35,18 +35,6 @@ build-backend = "pdm.backend"
 
 [tool.pdm]
 distribution = true
-
-# CPU-only torch for the laptop.
-[[tool.pdm.source]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-include_packages = ["torch"]
-
-[[tool.pdm.source]]
-name = "pypi"
-url = "https://pypi.org/simple"
-include_packages = ["*"]
-exclude_packages = ["torch"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
