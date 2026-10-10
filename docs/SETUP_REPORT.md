@@ -47,4 +47,9 @@ deep group: torch 2.14.1 (+cu130 build, see problems), chemprop 2.2.4, lightning
 - PyTDC is still 0.4.1 (1.1.15 declares numpy<2, pandas<3, rdkit<2024.3.1). `import tdc` works once `setuptools<81` is added (pkg_resources). Installed source confirms `BenchmarkGroup.get_train_valid_split` and the three endpoint names in tdc/metadata.py. No data download was tried.
 - The PyPI package is `PyTDC`; `pip install tdc` installs an unrelated project.
 - Lock strategy is `inherit_metadata` (needed for `pdm export`).
-- **Check:** `requirements-kaggle.txt` pins `rdkit==2026.3.6` and also `rdkit-pypi==2022.9.5` (a dependency of PyTDC 0.4.1); two packages provide the `rdkit` module, and the local env has a different rdkit build than the earlier 2026.9.1. Not yet resolved.
+
+## Update: rdkit / rdkit-pypi conflict (resolved)
+- Cause: PyTDC 0.4.1 depends on the legacy `rdkit-pypi` (2022.9.5), which installs into the same `rdkit/` directory as `rdkit`. Both were installed together.
+- Fix: `[tool.pdm.resolution] excludes = ["rdkit-pypi"]` in pyproject.toml. The lock and `requirements-kaggle.txt` now contain only `rdkit`; the venv has one `rdkit/` install.
+- rdkit stays at 2026.3.6, not the latest 2026.9.1: chemprop 2.3.1 depends on `cuik-molmaker-pin`, which pins rdkit exactly (newest pin is 2026.3.6). Forcing `rdkit>=2026.9` made the lock fall back to chemprop 2.2.4 (and `chemprop>=2.3.1` with it fails to resolve). Chosen: chemprop 2.3.1 + rdkit 2026.3.6.
+- Verified locally: `import rdkit` 2026.03.6, chemprop 2.3.1, torch 2.14.1+cpu, `from tdc import BenchmarkGroup`, pytest and ruff pass. Not verified on Kaggle (rdkit 2026.3.6 is installed there by pip from requirements-kaggle.txt).

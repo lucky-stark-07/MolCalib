@@ -68,7 +68,6 @@ python-dateutil==2.9.0.post0
 pytorch-lightning==2.6.6
 pyyaml==6.0.3
 rdkit==2026.3.6
-rdkit-pypi==2022.9.5
 requests==2.34.2
 rich==15.0.0
 scikit-learn==1.9.1

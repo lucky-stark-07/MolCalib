@@ -20,7 +20,7 @@ dependencies = [
 [project.optional-dependencies]
 # GNN training stack (torch comes in via chemprop). Local CPU torch: make setup-cpu
 deep = [
-    "chemprop",
+    "chemprop>=2.3.1",
 ]
 
 [dependency-groups]
@@ -41,3 +41,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.pdm.resolution]
+# PyTDC 0.4.1 depends on the legacy "rdkit-pypi", which shares the rdkit/ module dir with "rdkit".
+excludes = ["rdkit-pypi"]

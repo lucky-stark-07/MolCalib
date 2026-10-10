@@ -5,7 +5,7 @@
 groups = ["default", "deep", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:4e7c5487c9176fa5268d33f0f7313618d926cd6a2f017eb0604beda92d05f7a1"
+content_hash = "sha256:dfec8fdb5d2917640358db837cf786478f9e8e7d39aba90135abaddec4648e2d"
 
 [[metadata.targets]]
 requires_python = ">=3.11,<3.12"
@@ -1484,23 +1484,6 @@ files = [
     {file = "rdkit-2026.3.6-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:d8b92c14c99bf025772582c7f29b7619dd8c63c745a7b90f720b02640c15a5a1"},
     {file = "rdkit-2026.3.6-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:dcf09347e1a0dc1d7e5fcc34f5da79d1f4bb0e04ecadee669449b82ae2492799"},
     {file = "rdkit-2026.3.6-cp311-cp311-win_amd64.whl", hash = "sha256:b7a810148bbf917bb48ccec4e885b09c036fa68f28d3fd7fac6ddf96aac633d6"},
-]
-
-[[package]]
-name = "rdkit-pypi"
-version = "2022.9.5"
-summary = "A collection of chemoinformatics and machine-learning software written in C++ and Python"
-groups = ["default"]
-dependencies = [
-    "Pillow",
-    "numpy",
-]
-files = [
-    {file = "rdkit_pypi-2022.9.5-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:53313eb37f73d15d371bbd8ec13e4c92d8bf31267f674711854075261a81147c"},
-    {file = "rdkit_pypi-2022.9.5-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:6a82ee606af360cc55e4fdd04f64a08f92ed716b172c7eee6bbb866e46c0ea63"},
-    {file = "rdkit_pypi-2022.9.5-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f79fc47608c805d9af843b772be0a6de480048698ef3086563a1504c6d989821"},
-    {file = "rdkit_pypi-2022.9.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:35ed0bff871c871999433a94ca8115285c2910cfad3b98763590311db4129afa"},
-    {file = "rdkit_pypi-2022.9.5-cp311-cp311-win_amd64.whl", hash = "sha256:ca2a566b19a57d20b050ddf3a2c7700902e3bc59fa70f8686a5a6d4d081f30de"},
 ]
 
 [[package]]
