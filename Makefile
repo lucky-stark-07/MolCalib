@@ -1,4 +1,4 @@
-.PHONY: setup-cpu kaggle-reqs test lint splits audit smoke train evaluate
+.PHONY: kaggle-smoke kaggle-full kaggle-status kaggle-fetch setup-cpu kaggle-reqs test lint splits audit smoke train evaluate
 
 test:
 	pdm run pytest
@@ -27,3 +27,15 @@ setup-cpu:
 
 kaggle-reqs:
 	scripts/export_kaggle_reqs.sh
+
+kaggle-smoke:
+	python3 scripts/kaggle_ctl.py push
+
+kaggle-full:
+	python3 scripts/kaggle_ctl.py push --full
+
+kaggle-status:
+	python3 scripts/kaggle_ctl.py status
+
+kaggle-fetch:
+	python3 scripts/kaggle_ctl.py fetch
