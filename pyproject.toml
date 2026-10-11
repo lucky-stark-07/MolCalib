@@ -13,11 +13,14 @@ dependencies = [
     "pyarrow",
     "matplotlib",
     "rdkit",
-    "pytdc",
-    "setuptools<81",  # PyTDC 0.4.1 imports pkg_resources (removed in setuptools 82)
 ]
 
 [project.optional-dependencies]
+# Laptop-only: building splits from TDC. Not needed on Kaggle (it reads splits/*.csv).
+data = [
+    "pytdc",
+    "setuptools<81",  # PyTDC 0.4.1 imports pkg_resources (removed in setuptools 82)
+]
 # GNN training stack (torch comes in via chemprop). Local CPU torch: make setup-cpu
 deep = [
     "chemprop>=2.3.1",

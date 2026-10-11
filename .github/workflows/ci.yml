@@ -9,6 +9,7 @@ jobs:
         with:
           python-version: "3.11"
           cache: true
-      - run: pdm install
+      - run: pdm install -G deep
+      - run: pip install uv && ./scripts/install_cpu_torch.sh
       - run: pdm run ruff check
       - run: pdm run pytest

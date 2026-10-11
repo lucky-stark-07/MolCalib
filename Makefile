@@ -22,7 +22,7 @@ evaluate:
 	pdm run python scripts/evaluate.py
 
 setup-cpu:
-	pdm install -G deep
+	pdm install -G data -G deep
 	scripts/install_cpu_torch.sh
 
 kaggle-reqs:
