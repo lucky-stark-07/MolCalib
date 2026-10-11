@@ -49,8 +49,9 @@ This repository applies existing methods; it does not propose new ones.
 - D-MPNN: Yang et al., *Analyzing Learned Molecular Representations for Property Prediction*,
   J. Chem. Inf. Model. 59(8), 3370-3388 (2019).
 - Chemprop: Heid et al., *Chemprop: A Machine Learning Package for Chemical Property Prediction*,
-  J. Chem. Inf. Model. 64(1), 9-17 (2024). TODO: add the Chemprop v2 paper once its venue is
-  confirmed (the PyPI page points to it).
+  J. Chem. Inf. Model. 64(1), 9-17 (2024); Graff, Morgan et al., *Chemprop v2: An Efficient,
+  Modular Machine Learning Package for Chemical Property Prediction*, J. Chem. Inf. Model. 66(1),
+  28-33 (2026), DOI 10.1021/acs.jcim.5c02332.
 - UQ for molecular property prediction: Hirschfeld, Swanson, Yang, Barzilay & Coley,
   *Uncertainty Quantification Using Neural Networks for Molecular Property Prediction*,
   J. Chem. Inf. Model. 60(8) (2020); Scalia, Grambow, Pernici, Li & Green, *Evaluating Scalable
@@ -139,8 +140,8 @@ Deep ensemble shown; MC dropout is similar (see summary.md).
 - Caco-2 is small (64 / 91 calibration molecules), so Mondrian bins hold about 16-23 molecules
   and its conformal results are noisy.
 - GPU (Kaggle) and CPU runs are not bit-identical; only close agreement was checked.
-- Licences of the Caco-2 and lipophilicity source data are listed as "Not Specified" by TDC
-  (see [splits/README.md](splits/README.md)).
+- Data licences differ by task and are not covered by the MIT licence: solubility CC BY 4.0,
+  lipophilicity CC BY-SA 3.0 (ChEMBL), Caco-2 unconfirmed. See [splits/README.md](splits/README.md).
 
 ## Layout
 
@@ -153,4 +154,5 @@ kaggle/     notebook template            docs/      design log, setup report, pl
 
 ## Licence and citation
 
-MIT licence (code). See [CITATION.cff](CITATION.cff).
+MIT licence for the code. Data files (`splits/`, `results/preds.zip`) keep their source
+licences; see [splits/README.md](splits/README.md). Citation: [CITATION.cff](CITATION.cff).

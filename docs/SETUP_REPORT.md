@@ -60,3 +60,16 @@ deep group: torch 2.14.1 (+cu130 build, see problems), chemprop 2.2.4, lightning
 - Fixes needed on the way: (1) code dir was one level too deep; (2) PyTDC requires `rdkit-pypi`, which has no Python 3.13 build, so PyTDC moved to the optional `data` group (not in the Kaggle export) and pip uses `--no-deps`; (3) the export filter removed `torchmetrics` along with `torch`; (4) importing torch in the kernel after pip replaced numpy failed, so the notebook probes torch in a fresh process.
 - Smoke result (3 epochs, caco2 seed 1, cuda:0): MC dropout train 3.1 s, 2-member ensemble train 1.8 s; no NaNs; mean mu -5.33 / -5.28 and sigma_total 0.77, close to the CPU smoke run. Only one GPU was used (smoke mode). Full-run timing is still unmeasured.
 - Not tested: the two-GPU split of a full run, CI on GitHub (workflow changed to install deep + CPU torch), and bit-identical CPU/GPU results.
+
+## Final state (2026-10-12)
+
+Supersedes the open items above where they conflict.
+- Environment: PDM, Python 3.11.15; chemprop 2.3.1, rdkit 2026.3.6, PyTDC 0.4.1 (optional `data`
+  group, laptop only), torch 2.14.1 (CPU wheel locally via `make setup-cpu`; Kaggle keeps its own
+  CUDA torch, 2.11.0+cu128 at run time). `rdkit-pypi` is excluded from resolution.
+- Resolved: CPU-only torch locally; rdkit / rdkit-pypi clash; Kaggle Python 3.13 install
+  (`pip --no-deps`); TDC endpoint names confirmed in the installed source and by running.
+- All plan tasks T1-T12 are implemented; 44 tests pass. Full grid ran on Kaggle (90 trainings,
+  about 29 minutes wall time, 45 GPU-minutes). Results: `results/summary.md`.
+- Still open: GitHub CI has never run (no remote yet); CPU vs GPU results not compared bit for
+  bit; Caco-2 data licence unconfirmed (see `splits/README.md`).
