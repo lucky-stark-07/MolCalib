@@ -53,3 +53,10 @@ deep group: torch 2.14.1 (+cu130 build, see problems), chemprop 2.2.4, lightning
 - Fix: `[tool.pdm.resolution] excludes = ["rdkit-pypi"]` in pyproject.toml. The lock and `requirements-kaggle.txt` now contain only `rdkit`; the venv has one `rdkit/` install.
 - rdkit stays at 2026.3.6, not the latest 2026.9.1: chemprop 2.3.1 depends on `cuik-molmaker-pin`, which pins rdkit exactly (newest pin is 2026.3.6). Forcing `rdkit>=2026.9` made the lock fall back to chemprop 2.2.4 (and `chemprop>=2.3.1` with it fails to resolve). Chosen: chemprop 2.3.1 + rdkit 2026.3.6.
 - Verified locally: `import rdkit` 2026.03.6, chemprop 2.3.1, torch 2.14.1+cpu, `from tdc import BenchmarkGroup`, pytest and ruff pass. Not verified on Kaggle (rdkit 2026.3.6 is installed there by pip from requirements-kaggle.txt).
+
+## Update 2026-10-11: Kaggle smoke run (kernel version 4, passed)
+- Environment seen on Kaggle: Python 3.13, torch 2.11.0+cu128, 2 GPUs visible, chemprop 2.3.1, rdkit 2026.3.6 (after `pip install --no-deps -r requirements-kaggle.txt`). Run limit in the log: papermill timeout 43200 s.
+- Datasets are mounted at `/kaggle/input/datasets/<user>/<slug>/` and the uploaded zip was already extracted.
+- Fixes needed on the way: (1) code dir was one level too deep; (2) PyTDC requires `rdkit-pypi`, which has no Python 3.13 build, so PyTDC moved to the optional `data` group (not in the Kaggle export) and pip uses `--no-deps`; (3) the export filter removed `torchmetrics` along with `torch`; (4) importing torch in the kernel after pip replaced numpy failed, so the notebook probes torch in a fresh process.
+- Smoke result (3 epochs, caco2 seed 1, cuda:0): MC dropout train 3.1 s, 2-member ensemble train 1.8 s; no NaNs; mean mu -5.33 / -5.28 and sigma_total 0.77, close to the CPU smoke run. Only one GPU was used (smoke mode). Full-run timing is still unmeasured.
+- Not tested: the two-GPU split of a full run, CI on GitHub (workflow changed to install deep + CPU torch), and bit-identical CPU/GPU results.

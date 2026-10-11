@@ -5,7 +5,7 @@
     python scripts/kaggle_ctl.py upload             # create or version the two datasets
     python scripts/kaggle_ctl.py push [--full]      # stage + upload + push the notebook (starts the run)
     python scripts/kaggle_ctl.py status
-    python scripts/kaggle_ctl.py fetch              # download outputs into cache/preds, results/
+    python scripts/kaggle_ctl.py fetch [--full]      # download outputs (--full: into cache/preds and results/)
 
 Authentication is the CLI's own (`kaggle auth login` or KAGGLE_API_TOKEN). This script never reads
 or writes credentials.
@@ -121,22 +121,24 @@ def push(owner: str, full: bool, timeout: int | None) -> None:
     print(f"started; check with: python scripts/kaggle_ctl.py status ({'full' if full else 'smoke'} run)")
 
 
-def fetch(owner: str) -> None:
+def fetch(owner: str, full: bool) -> None:
     out = ROOT / "cache" / "kaggle_out"
     out.mkdir(parents=True, exist_ok=True)
     kaggle("kernels", "output", f"{owner}/{KERNEL_SLUG}", "-p", str(out), "-o")
-    for sub in ("cache/preds", "cache/smoke/preds"):
+    # smoke outputs never go into cache/preds or results/: they would be taken for finished runs
+    for sub in ("cache/preds",) if full else ("cache/smoke/preds",):
         src = out / sub
         if src.is_dir():
             dst = ROOT / sub
             dst.mkdir(parents=True, exist_ok=True)
             for f in src.glob("*.parquet"):
                 shutil.copy(f, dst / f.name)
-    (ROOT / "results").mkdir(exist_ok=True)
     logs = sorted(out.rglob("compute_*.csv"))
-    for f in logs:
-        shutil.copy(f, ROOT / "results" / f.name)
-    print(f"outputs in {out}; copied {len(logs)} compute log(s) to results/")
+    if full:
+        (ROOT / "results").mkdir(exist_ok=True)
+        for f in logs:
+            shutil.copy(f, ROOT / "results" / f.name)
+    print(f"outputs in {out}; compute logs: {[str(p) for p in logs]}")
 
 
 def main() -> None:
@@ -158,7 +160,7 @@ def main() -> None:
     elif a.cmd == "status":
         kaggle("kernels", "status", f"{owner}/{KERNEL_SLUG}")
     elif a.cmd == "fetch":
-        fetch(owner)
+        fetch(owner, a.full)
 
 
 if __name__ == "__main__":

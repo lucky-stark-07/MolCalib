@@ -20,7 +20,8 @@ under `cache/kaggle/` and drives the `kaggle` CLI. See `docs/IMPLEMENTATION_PLAN
 
     make kaggle-smoke     # stage, upload datasets, push notebook with --smoke (3 epochs, caco2)
     make kaggle-status
-    make kaggle-fetch     # outputs -> cache/smoke/preds or cache/preds, results/compute_*.csv
+    make kaggle-fetch     # smoke outputs -> cache/smoke/preds (never results/)
+    make kaggle-fetch-full  # full outputs -> cache/preds, results/compute_*.csv
     make kaggle-full      # only after the smoke run passes; commit first (the hash is logged)
 
 With two GPUs the notebook runs seeds 1-3 on cuda:0 and seeds 4-5 on cuda:1 (full run only).
