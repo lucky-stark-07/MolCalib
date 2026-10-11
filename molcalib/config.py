@@ -24,3 +24,7 @@ def member_seed(split_seed: int, k: int) -> int:
 def mcd_seed(split_seed: int) -> int:
     """Seed of the single MC dropout model for a given split seed."""
     return split_seed * 100 + 99
+
+# Statistics (T9): scaffold-cluster bootstrap over test scaffold groups
+N_BOOT = 1000
+BOOT_SEED = 0

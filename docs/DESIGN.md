@@ -27,3 +27,9 @@
 - **Why:** smallest definitions consistent with the plan's wording.
 - **Alternatives rejected:** integrating the calibration curve over [0, 1] (needs more levels; same ranking); calibration-set bins for the test breakdown (bins would differ per calibration source).
 - **Cost in hours:** 0.
+
+### DR-004: T9 statistics
+- **Decision:** (a) One set of 1000 scaffold-group resamples per task (seed 0 in config), shared by all seeds, methods and conformal variants, so comparisons are paired; test rows were checked to be identical across all prediction files. (b) A resample draws as many test scaffold groups as exist, with replacement; molecules are weighted by how often their group was drawn. (c) The CI is the 2.5-97.5 percentile of the seed-averaged metric; mean and sd are over the 5 seeds on the full test set. (d) CIs cover test-set sampling only; models, calibration sets and conformal quantiles are fixed. (e) Far-bin coverage keeps the full-test-set quartile bins fixed. (f) Infinite widths stay infinite (nearest-rank percentile); inf - inf differences are reported as NaN.
+- **Why:** plan T9 (cluster bootstrap over test scaffold groups, never single molecules; paired per-seed differences).
+- **Alternatives rejected:** re-fitting conformal quantiles inside each resample (would need resampling calibration groups too; not in the plan); independent resamples per seed (loses pairing).
+- **Cost in hours:** 0.5.
