@@ -1,11 +1,14 @@
 """Drive Kaggle runs from the laptop through the `kaggle` CLI.
 
     export KAGGLE_USERNAME=<your kaggle username>   # not a secret; used for dataset/kernel ids
-    python scripts/kaggle_ctl.py stage [--full]     # build upload folders under cache/kaggle/
+    python scripts/kaggle_ctl.py stage [--mode M]  # build upload folders under cache/kaggle/
     python scripts/kaggle_ctl.py upload             # create or version the two datasets
-    python scripts/kaggle_ctl.py push [--full]      # stage + upload + push the notebook (starts the run)
+    python scripts/kaggle_ctl.py push [--mode M]   # stage + upload + push the notebook (starts the run)
     python scripts/kaggle_ctl.py status
-    python scripts/kaggle_ctl.py fetch [--full]      # download outputs (--full: into cache/preds and results/)
+    python scripts/kaggle_ctl.py fetch [--mode M]  # download outputs (smoke: cache/smoke/preds; otherwise cache/preds, results/)
+
+Modes: smoke (default; 3 epochs, caco2), pilot (all tasks, seeds 1 2, full epochs), full (all seeds).
+--seeds / --tasks override the mode's lists.
 
 Authentication is the CLI's own (`kaggle auth login` or KAGGLE_API_TOKEN). This script never reads
 or writes credentials.
@@ -50,11 +53,20 @@ def _dataset_meta(folder: Path, owner: str, slug: str, title: str, subtitle: str
     (folder / "dataset-metadata.json").write_text(json.dumps(meta, indent=2))
 
 
-def stage(owner: str, full: bool, allow_dirty: bool = False, root: Path = ROOT,
-          stage_dir: Path = STAGE) -> Path:
+MODES = {"smoke": (["caco2_wang"], [1]), "pilot": (None, [1, 2]), "full": (None, None)}
+
+
+def stage(owner: str, mode: str = "smoke", tasks=None, seeds=None, allow_dirty: bool = False,
+          root: Path = ROOT, stage_dir: Path = STAGE) -> Path:
     """Build cache/kaggle/{splits,code,kernel}. Returns the stage dir."""
+    sys.path.insert(0, str(root))
+    from molcalib import config
+
+    mode_tasks, mode_seeds = MODES[mode]
+    tasks = tasks or mode_tasks or list(config.TASKS)
+    seeds = seeds or mode_seeds or list(config.SEEDS)
     dirty = git("status", "--porcelain")
-    if dirty and full and not allow_dirty:
+    if dirty and mode != "smoke" and not allow_dirty:
         sys.exit("working tree has uncommitted changes; commit first (the hash is logged) "
                  "or pass --allow-dirty")
     if dirty:
@@ -81,8 +93,12 @@ def stage(owner: str, full: bool, allow_dirty: bool = False, root: Path = ROOT,
                   "MolCalib source code snapshot as a zip file")
 
     nb = (root / "kaggle" / "molcalib_train.ipynb").read_text()
-    (stage_dir / "kernel" / "molcalib_train.ipynb").write_text(
-        nb.replace("__EXTRA_ARGS__", "" if full else "--smoke"))
+    for key, val in (("__SMOKE__", str(mode == "smoke")),
+                     ("__TASKS__", " ".join(tasks)),
+                     ("__SEEDS__", " ".join(map(str, seeds))),
+                     ("__RUN__", mode if (tasks, seeds) == (list(config.TASKS), list(config.SEEDS)) or mode != "full" else "custom")):
+        nb = nb.replace(key, val)
+    (stage_dir / "kernel" / "molcalib_train.ipynb").write_text(nb)
     (stage_dir / "kernel" / "kernel-metadata.json").write_text(json.dumps({
         "id": f"{owner}/{KERNEL_SLUG}",
         "title": "MolCalib Train",
@@ -113,15 +129,16 @@ def upload(owner: str) -> None:
             kaggle("datasets", "create", "-p", path, "-t")
 
 
-def push(owner: str, full: bool, timeout: int | None) -> None:
+def push(owner: str, mode: str, timeout: int | None) -> None:
     args = ["kernels", "push", "-p", str(STAGE / "kernel"), "--accelerator", "NvidiaTeslaT4"]
     if timeout:
         args += ["-t", str(timeout)]
     kaggle(*args)
-    print(f"started; check with: python scripts/kaggle_ctl.py status ({'full' if full else 'smoke'} run)")
+    print(f"started; check with: python scripts/kaggle_ctl.py status ({mode} run)")
 
 
-def fetch(owner: str, full: bool) -> None:
+def fetch(owner: str, mode: str) -> None:
+    full = mode != "smoke"
     out = ROOT / "cache" / "kaggle_out"
     out.mkdir(parents=True, exist_ok=True)
     kaggle("kernels", "output", f"{owner}/{KERNEL_SLUG}", "-p", str(out), "-o")
@@ -144,23 +161,25 @@ def fetch(owner: str, full: bool) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument("cmd", choices=["stage", "upload", "push", "status", "fetch"])
-    ap.add_argument("--full", action="store_true", help="full grid instead of the smoke run")
+    ap.add_argument("--mode", choices=list(MODES), default="smoke")
+    ap.add_argument("--tasks", nargs="+", default=None)
+    ap.add_argument("--seeds", nargs="+", type=int, default=None)
     ap.add_argument("--allow-dirty", action="store_true")
     ap.add_argument("--timeout", type=int, default=None, help="kernel run limit in seconds")
     a = ap.parse_args()
     owner = user()
     if a.cmd == "stage":
-        print("staged in", stage(owner, a.full, a.allow_dirty))
+        print("staged in", stage(owner, a.mode, a.tasks, a.seeds, a.allow_dirty))
     elif a.cmd == "upload":
         upload(owner)
     elif a.cmd == "push":
-        stage(owner, a.full, a.allow_dirty)
+        stage(owner, a.mode, a.tasks, a.seeds, a.allow_dirty)
         upload(owner)
-        push(owner, a.full, a.timeout)
+        push(owner, a.mode, a.timeout)
     elif a.cmd == "status":
         kaggle("kernels", "status", f"{owner}/{KERNEL_SLUG}")
     elif a.cmd == "fetch":
-        fetch(owner, a.full)
+        fetch(owner, a.mode)
 
 
 if __name__ == "__main__":
