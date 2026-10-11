@@ -1,5 +1,156 @@
 # MolCalib
 
-Benchmarking established uncertainty quantification methods (deep ensembles, MC dropout, split conformal prediction) for molecular property prediction on scaffold-split TDC ADMET tasks.
+An evaluation of established uncertainty quantification (UQ) methods for molecular property
+prediction under scaffold shift: deep ensembles, MC dropout, and split / normalized / Mondrian
+conformal prediction, applied to a Chemprop D-MPNN on three TDC ADMET regression tasks.
 
-Status: scaffolding only. See docs/IMPLEMENTATION_PLAN.md.
+## 1. Question
+
+On scaffold-split TDC ADMET tasks:
+
+1. Does split conformal prediction reach its nominal 90% coverage on the test set?
+2. Does that depend on where the calibration data comes from: a random hold-out of the training
+   molecules (`naive_cal`) or a scaffold-disjoint validation set (`valid`)?
+3. How does UQ quality change with a molecule's distance from the training set?
+
+## 2. Setup
+
+| | |
+|---|---|
+| Tasks | TDC `admet_group`: `caco2_wang`, `lipophilicity_astrazeneca`, `solubility_aqsoldb` (regression) |
+| Splits | TDC train/valid scaffold split per seed; fixed TDC test set; `naive_cal` = random 10% of train |
+| Seeds | 1-5 (split seed; model seeds derived from it, see `molcalib/config.py`) |
+| Model | Chemprop v2 D-MPNN, hidden 300, depth 3, mean aggregation, dropout 0.1, mean-variance (Gaussian NLL) head |
+| Training | Chemprop default optimiser and LR schedule, batch 64, fixed 60 epochs, last epoch kept; no tuning, no checkpoint selection |
+| UQ | 5-member deep ensemble; MC dropout (1 model, T = 30); total variance = mean predicted variance + variance of means |
+| Conformal | split, normalized (by σ), Mondrian and normalized Mondrian (bins = calibration quartiles of distance to train), each calibrated on `naive_cal` and on `valid`; α = 0.1 |
+| Distance | 1 − max Tanimoto similarity to `train_fit` (Morgan radius 2, 2048 bits) |
+| Statistics | mean ± sd over 5 seeds; 95% CIs from 1000 bootstrap resamples of test scaffold groups (and, separately, of calibration scaffold groups with refitted conformal quantiles); paired comparisons |
+
+Splits have zero scaffold overlap between `train_fit`, `valid` and `test` for every task and seed
+(`results/split_audit.json`). Design choices not fixed in advance are recorded in
+[docs/DESIGN.md](docs/DESIGN.md).
+
+## 3. Prior work
+
+This repository applies existing methods; it does not propose new ones.
+
+- Deep ensembles: Lakshminarayanan, Pritzel & Blundell, *Simple and Scalable Predictive
+  Uncertainty Estimation using Deep Ensembles*, NeurIPS 2017.
+- MC dropout: Gal & Ghahramani, *Dropout as a Bayesian Approximation*, ICML 2016.
+- Mean-variance estimation: Nix & Weigend, *Estimating the mean and variance of the target
+  probability distribution*, IEEE ICNN 1994.
+- Conformal prediction, including Mondrian conformal prediction: Vovk, Gammerman & Shafer,
+  *Algorithmic Learning in a Random World*, Springer 2005.
+- Normalized nonconformity scores: Papadopoulos, Vovk & Gammerman, *Regression Conformal Prediction
+  with Nearest Neighbours*, JAIR 40, 815-840 (2011).
+- Split conformal for regression: Lei, G'Sell, Rinaldo, Tibshirani & Wasserman,
+  *Distribution-Free Predictive Inference for Regression*, JASA 2018.
+- D-MPNN: Yang et al., *Analyzing Learned Molecular Representations for Property Prediction*,
+  J. Chem. Inf. Model. 59(8), 3370-3388 (2019).
+- Chemprop: Heid et al., *Chemprop: A Machine Learning Package for Chemical Property Prediction*,
+  J. Chem. Inf. Model. 64(1), 9-17 (2024). TODO: add the Chemprop v2 paper once its venue is
+  confirmed (the PyPI page points to it).
+- UQ for molecular property prediction: Hirschfeld, Swanson, Yang, Barzilay & Coley,
+  *Uncertainty Quantification Using Neural Networks for Molecular Property Prediction*,
+  J. Chem. Inf. Model. 60(8) (2020); Scalia, Grambow, Pernici, Li & Green, *Evaluating Scalable
+  Uncertainty Estimation Methods for Deep Learning-Based Molecular Property Prediction*,
+  J. Chem. Inf. Model. 60(6), 2697-2717 (2020).
+- Data: Huang et al., *Therapeutics Data Commons*, NeurIPS Datasets and Benchmarks 2021
+  (arXiv:2102.09548). Original data sources and licences: [splits/README.md](splits/README.md).
+- Scaffolds: Bemis & Murcko, *The Properties of Known Drugs. 1. Molecular Frameworks*,
+  J. Med. Chem. 39, 2887-2893 (1996).
+
+## 4. Reproduce
+
+Requires [PDM](https://pdm-project.org) and Python 3.11. Local work is CPU-only.
+
+```bash
+make setup-cpu          # pdm install -G data -G deep, then a CPU build of torch
+make test lint
+make splits audit       # TDC download -> splits/*.csv, results/split_audit.json
+```
+
+Training (90 models) ran on Kaggle (2 × T4, about 30 minutes). To repeat it, see
+[kaggle/README.md](kaggle/README.md): `make kaggle-smoke`, then `make kaggle-full` and
+`make kaggle-fetch-full`. Every Kaggle run is preceded by a CPU smoke test (`make smoke`).
+
+To skip training, use the committed predictions:
+
+```bash
+python scripts/pack_preds.py --unpack   # results/preds.zip -> cache/preds/
+make evaluate                           # conformal, metrics, statistics, report
+```
+
+`make evaluate` rewrites `results/metrics_*.csv`, `results/stats_*.csv`, `results/summary.md`
+and the figures. Every results file records the git commit that produced it.
+
+## 5. Results
+
+Full tables and figures: **[results/summary.md](results/summary.md)** (generated; no hand-typed
+numbers). The numbers below are copied from it (commit `dec9dc5`); if they disagree, summary.md
+is correct. Brackets are 95% CIs that resample both test and calibration scaffold groups.
+Deep ensemble shown; MC dropout is similar (see summary.md).
+
+**Split conformal coverage by calibration source (target 0.90)**
+
+| Task | `naive_cal` | `valid` | `valid` − `naive_cal` | Seeds with `valid` higher |
+|---|---|---|---|---|
+| Caco-2 | 0.916 [0.839, 0.956] | 0.922 [0.847, 0.966] | +0.005 [−0.024, +0.042] | 4/5 |
+| Lipophilicity | 0.896 [0.856, 0.920] | 0.906 [0.877, 0.928] | +0.010 [−0.018, +0.045] | 4/5 |
+| Solubility | 0.866 [0.828, 0.905] | 0.918 [0.892, 0.938] | +0.052 [+0.016, +0.082] | 5/5 |
+
+- On solubility, calibrating on the scaffold-disjoint `valid` set gave higher coverage than the
+  random hold-out in every seed, and the CI of the difference excludes zero.
+- On lipophilicity and Caco-2 we found no difference that the CIs can distinguish from zero
+  (negative result). Caco-2 has 182 test molecules in 72 scaffold groups, so its CIs are wide.
+
+**Coverage on the test molecules farthest from the training set** (top quartile of distance)
+
+| Task | split, `naive_cal` | split, `valid` | Mondrian, `naive_cal` | Mondrian, `valid` |
+|---|---|---|---|---|
+| Lipophilicity | 0.798 [0.728, 0.847] | 0.811 [0.756, 0.858] | 0.926 [0.866, 0.959] | 0.911 [0.838, 0.940] |
+
+- With one margin for all molecules, split conformal under-covers the farthest quartile on
+  lipophilicity for both calibration sources, although its overall coverage is close to 0.90.
+  Mondrian conformal (one margin per distance bin) brings it to about 0.9.
+  ![coverage by distance](results/fig_coverage_by_nn_bin.png)
+
+**Other results** (details and CIs in summary.md)
+
+- The model's own Gaussian intervals are too narrow on all three tasks (signed miscalibration
+  < 0), for both ensembles and MC dropout.
+- Deep ensembles had slightly lower test MAE than MC dropout on lipophilicity
+  (−0.018 [−0.024, −0.013], test-only CI) and solubility (−0.012 [−0.021, −0.004]); no difference
+  was detected on Caco-2. Ensembles cost 5× the training compute (about 37 of the 45 GPU-minutes).
+- Spearman correlation between predicted σ and absolute error is weak (about 0.07-0.23).
+
+## 6. Limitations
+
+- Three regression tasks only.
+- Marginal coverage (and coverage per distance bin) only; no conditional coverage guarantees.
+- Fixed hyperparameters chosen in advance, not tuned; results may differ for tuned models.
+- How TDC built its `test.csv` was not verified from source; scaffold disjointness was checked
+  empirically (split audit).
+- The TDC test set is the same for all seeds, so seeds vary training, calibration and validation
+  data but not the test molecules; test sampling is covered by the scaffold-group bootstrap.
+- CIs hold the trained models fixed. About 160 comparisons are reported with no
+  multiple-comparison correction.
+- Caco-2 is small (64 / 91 calibration molecules), so Mondrian bins hold about 16-23 molecules
+  and its conformal results are noisy.
+- GPU (Kaggle) and CPU runs are not bit-identical; only close agreement was checked.
+- Licences of the Caco-2 and lipophilicity source data are listed as "Not Specified" by TDC
+  (see [splits/README.md](splits/README.md)).
+
+## Layout
+
+```
+molcalib/   config, data (splits), audit, models, train, runner, conformal, metrics, stats, report
+scripts/    make_splits, audit, train_all, evaluate, kaggle_ctl, pack_preds
+splits/     committed split files        results/   metrics, statistics, summary.md, figures, preds.zip
+kaggle/     notebook template            docs/      design log, setup report, plan, eval protocol
+```
+
+## Licence and citation
+
+MIT licence (code). See [CITATION.cff](CITATION.cff).
