@@ -1,7 +1,7 @@
-"""Laptop: conformal intervals (T7), test metrics (T8) and statistics (T9).
+"""Laptop: conformal intervals (T7), test metrics (T8), statistics (T9) and report (T10).
 
-Writes cache/conformal/*.parquet, results/metrics_*.csv and results/stats_*.csv. The report (T10)
-is added to this script later.
+Writes cache/conformal/*.parquet, results/metrics_*.csv, results/stats_*.csv,
+results/summary.md and results/fig_*.png. `--report-only` rebuilds the report from results/.
 """
 
 import argparse
@@ -14,6 +14,7 @@ import pandas as pd
 from molcalib import config
 from molcalib.conformal import intervals_for_run
 from molcalib.metrics import evaluate_run
+from molcalib.report import write_report
 from molcalib.runner import git_commit
 from molcalib.stats import (
     conformal_boot_with_cal,
@@ -33,8 +34,12 @@ def main() -> None:
     ap.add_argument("--preds", default="cache/preds")
     ap.add_argument("--conformal-out", default="cache/conformal")
     ap.add_argument("--results", default="results")
+    ap.add_argument("--report-only", action="store_true")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    if a.report_only:
+        log.info("wrote %s", write_report(Path(a.results)))
+        return
     conf_dir, res_dir = Path(a.conformal_out), Path(a.results)
     conf_dir.mkdir(parents=True, exist_ok=True)
     res_dir.mkdir(parents=True, exist_ok=True)
@@ -73,6 +78,7 @@ def main() -> None:
         df.insert(0, "git_commit", commit)
         df.to_csv(res_dir / f"{name}.csv", index=False, float_format="%.6g")
     log.info("wrote %s", ", ".join(f"{n}.csv" for n in tables))
+    log.info("wrote %s", write_report(res_dir))
 
 
 if __name__ == "__main__":
