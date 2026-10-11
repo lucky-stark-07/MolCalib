@@ -33,3 +33,9 @@
 - **Why:** plan T9 (cluster bootstrap over test scaffold groups, never single molecules; paired per-seed differences).
 - **Alternatives rejected:** re-fitting conformal quantiles inside each resample (would need resampling calibration groups too; not in the plan); independent resamples per seed (loses pairing).
 - **Cost in hours:** 0.5.
+
+### DR-005: second CI that also resamples calibration groups (user choice, option B)
+- **Decision:** For conformal metrics, also report ci_lo_cal/ci_hi_cal: in each of the 1000 resamples the calibration set (naive_cal or valid) is resampled by scaffold group and all conformal quantiles are refit, then scored on that resample's test weights. Calibration resamples are seeded by (BOOT_SEED, split seed, source) and shared by ensemble and MC dropout of the same seed. The plan's test-only CI (ci_lo/ci_hi) is kept unchanged.
+- **Why:** the main question (naive_cal vs valid calibration) depends on calibration-set sampling, which the test-only CI ignores; e.g. split-conformal width had a zero-width test-only CI.
+- **Alternatives rejected:** replacing the plan's CI (user asked to report both).
+- **Cost in hours:** 0.5.

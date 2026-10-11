@@ -2,8 +2,11 @@
 
 The bootstrap resamples whole test scaffold groups, never single molecules. One set of resamples
 is drawn per task and shared by every seed, method and conformal variant, so all comparisons are
-paired. The confidence intervals cover test-set sampling only: trained models, calibration sets
-and conformal quantiles are held fixed.
+paired. Two kinds of interval are reported for conformal metrics:
+- ci_lo/ci_hi: test-set sampling only (plan T9); models, calibration sets and conformal
+  quantiles are held fixed.
+- ci_lo_cal/ci_hi_cal: calibration scaffold groups are resampled too and the conformal
+  quantiles refit in every resample (DR-005). Models stay fixed.
 """
 
 import numpy as np
@@ -11,6 +14,7 @@ import pandas as pd
 from scipy.stats import norm, spearmanr
 
 from molcalib import config
+from molcalib import conformal as cf
 from molcalib.conformal import nn_bin_edges
 from molcalib.metrics import GAUSS_LEVELS
 
@@ -96,8 +100,60 @@ def run_metrics(test: pd.DataFrame, intervals: pd.DataFrame, w: np.ndarray) -> d
     return out
 
 
+def conformal_boot_with_cal(pred: pd.DataFrame, w_test: np.ndarray, seed: int,
+                            alpha: float = config.ALPHA) -> dict:
+    """Conformal metrics when calibration groups are also resampled and quantiles refit.
+
+    Resample b uses test weights w_test[b] and a scaffold-group resample of each calibration
+    set. Calibration resamples depend on (BOOT_SEED, split seed, source) only, so the ensemble
+    and MC dropout runs of one seed share them (paired comparison).
+    Returns {(source, variant, metric): array(n_boot)} for coverage, mean_width, coverage_far_bin.
+    """
+    test = pred[pred["split"] == "test"]
+    y, mu, sg, nn = (test[c].to_numpy(float) for c in ("y", "mu", "sigma_total", "nn_dist"))
+    edges = nn_bin_edges(nn)
+    far = (np.searchsorted(edges, nn, side="left") == len(edges)).astype(float)
+    n_boot = len(w_test)
+    out = {}
+    for k, source in enumerate(cf.SOURCES):
+        cal = pred[pred["split"] == source]
+        cy, cmu, csg, cnn = (cal[c].to_numpy(float) for c in ("y", "mu", "sigma_total", "nn_dist"))
+        w_cal = group_weights(cal["scaffold_id"], n_boot, [config.BOOT_SEED, seed, k])
+        res = {(v, m): np.empty(n_boot) for v in cf.VARIANTS
+               for m in ("coverage", "mean_width", "coverage_far_bin")}
+        for b in range(n_boot):
+            i = np.repeat(np.arange(len(cal)), w_cal[b].astype(int))
+            fits = {
+                "split": cf.fit_split(cy[i], cmu[i], alpha),
+                "normalized": cf.fit_normalized(cy[i], cmu[i], csg[i], alpha),
+                "mondrian": cf.fit_mondrian(cy[i], cmu[i], cnn[i], alpha),
+                "mondrian_normalized": cf.fit_mondrian_normalized(cy[i], cmu[i], csg[i], cnn[i],
+                                                                  alpha),
+            }
+            wb = w_test[b]
+            for v, fit in fits.items():
+                lo, hi = fit.predict(mu, sg, nn)
+                hit = ((y >= lo) & (y <= hi)).astype(float)
+                res[(v, "coverage")][b] = wmean(wb, hit)[0]
+                res[(v, "mean_width")][b] = wmean(wb, hi - lo)[0]
+                res[(v, "coverage_far_bin")][b] = (wmean(wb, hit * far) / wmean(wb, far))[0]
+        out.update({(source, v, m): arr for (v, m), arr in res.items()})
+    return out
+
+
+def _cal_ci(runs: list, key, runs_b=None, key_b=None) -> dict:
+    """ci_lo_cal/ci_hi_cal if every run has calibration-resampled values for key."""
+    if not all(len(r) > 2 and key in r[2] for r in runs):
+        return {"ci_lo_cal": np.nan, "ci_hi_cal": np.nan}
+    boot = np.mean([r[2][key] for r in runs], axis=0)
+    if runs_b is not None:
+        boot = boot - np.mean([r[2][key_b] for r in runs_b], axis=0)
+    lo, hi = percentile_ci(boot)
+    return {"ci_lo_cal": lo, "ci_hi_cal": hi}
+
+
 def summarize(per_run: dict) -> pd.DataFrame:
-    """per_run: {(task, method, seed): (full_sample_dict, boot_dict)} -> one row per metric.
+    """per_run: {(task, method, seed): (full, boot[, boot_with_cal])} -> one row per metric.
 
     mean/sd are over seeds (full test set); the CI is the percentile interval of the
     seed-averaged metric over the shared bootstrap resamples.
@@ -113,6 +169,7 @@ def summarize(per_run: dict) -> pd.DataFrame:
             rows.append({"task": task, "method": method, "source": key[0], "variant": key[1],
                          "metric": key[2], "n_seeds": len(seeds), "mean": vals.mean(),
                          "sd": vals.std(ddof=1), "ci_lo": lo, "ci_hi": hi,
+                         **_cal_ci([per_run[(task, method, s)] for s in seeds], key),
                          **{f"seed{s}": v for s, v in zip(seeds, vals)}})
     return pd.DataFrame(rows)
 
@@ -122,7 +179,9 @@ def _diff_row(tags, seeds, a, b, key_a, key_b) -> dict:
     boot = np.mean([a[s][1][key_a] - b[s][1][key_b] for s in seeds], axis=0)
     lo, hi = percentile_ci(boot)
     return {**tags, "n_seeds": len(seeds), "mean_diff": d.mean(), "sd_diff": d.std(ddof=1),
-            "ci_lo": lo, "ci_hi": hi, "n_seeds_positive": int((d > 0).sum()),
+            "ci_lo": lo, "ci_hi": hi,
+            **_cal_ci([a[s] for s in seeds], key_a, [b[s] for s in seeds], key_b),
+            "n_seeds_positive": int((d > 0).sum()),
             **{f"seed{s}": v for s, v in zip(seeds, d)}}
 
 

@@ -78,3 +78,39 @@ def test_wmean_handles_infinite_values():
     x = np.array([1.0, np.inf, 3.0])
     w = np.array([[1, 0, 1], [1, 2, 1]], dtype=float)
     np.testing.assert_array_equal(stats.wmean(w, x), [2.0, np.inf])
+
+
+def _bigpred(seed, n_cal=300, n_test=400):
+    rng = np.random.default_rng(seed)
+    n = 2 * n_cal + n_test
+    nn = rng.uniform(0, 1, n)
+    sg = 0.5 + nn
+    mu = rng.normal(size=n)
+    return pd.DataFrame({
+        "split": ["naive_cal"] * n_cal + ["valid"] * n_cal + ["test"] * n_test,
+        "scaffold_id": np.r_[np.arange(2 * n_cal) // 3, 10_000 + np.arange(n_test) // 4],
+        "y": mu + sg * rng.normal(size=n), "mu": mu, "sigma_total": sg, "nn_dist": nn,
+    })
+
+
+def test_calibration_resampling_widens_coverage_ci_and_keeps_pairing():
+    per_run = {}
+    w = None
+    for m in ("ensemble", "mcd"):
+        for s in (1, 2):
+            pred = _bigpred(s)  # same data for both methods -> zero paired difference
+            iv = intervals_for_run(pred)
+            test = pred[pred["split"] == "test"]
+            w = stats.group_weights(test["scaffold_id"], 200, 0) if w is None else w
+            per_run[("t", m, s)] = (stats.run_metrics(test, iv, np.ones((1, len(test)))),
+                                    stats.run_metrics(test, iv, w),
+                                    stats.conformal_boot_with_cal(pred, w, s))
+    summ = stats.summarize(per_run)
+    cov = summ[(summ.metric == "coverage") & (summ.variant == "split")]
+    assert ((cov.ci_hi_cal - cov.ci_lo_cal) >= (cov.ci_hi - cov.ci_lo)).all()
+    assert summ[summ.metric == "mae"][["ci_lo_cal", "ci_hi_cal"]].isna().all().all()
+    width = summ[(summ.metric == "mean_width") & (summ.variant == "split")]
+    assert ((width.ci_hi_cal - width.ci_lo_cal) > 0).all()  # test-only CI is zero-width here
+    pair = stats.paired(per_run)
+    same = pair[(pair.comparison == "ensemble-mcd") & pair.ci_lo_cal.notna()]
+    assert len(same) and np.allclose(same[["ci_lo_cal", "ci_hi_cal"]].to_numpy(), 0)

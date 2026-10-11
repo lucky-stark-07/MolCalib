@@ -15,7 +15,13 @@ from molcalib import config
 from molcalib.conformal import intervals_for_run
 from molcalib.metrics import evaluate_run
 from molcalib.runner import git_commit
-from molcalib.stats import group_weights, paired, run_metrics, summarize
+from molcalib.stats import (
+    conformal_boot_with_cal,
+    group_weights,
+    paired,
+    run_metrics,
+    summarize,
+)
 
 log = logging.getLogger(__name__)
 
@@ -55,6 +61,7 @@ def main() -> None:
                 per_run[(task, method, seed)] = (
                     run_metrics(test, iv, np.ones((1, len(test)))),
                     run_metrics(test, iv, weights),
+                    conformal_boot_with_cal(pred, weights, seed, config.ALPHA),
                 )
                 log.info("%s seed %d %s: done", task, seed, method)
 
