@@ -22,7 +22,7 @@ def test_quantile_level_and_too_few_points():
 
 def test_coverage_is_nominal_on_exchangeable_data():
     rng = np.random.default_rng(0)
-    cov = {"split": [], "normalized": [], "mondrian": []}
+    cov = {"split": [], "normalized": [], "mondrian": [], "mondrian_normalized": []}
     bins = []
     for _ in range(300):
         yc, muc, sgc, nnc = _data(rng, 400)
@@ -31,12 +31,13 @@ def test_coverage_is_nominal_on_exchangeable_data():
             "split": cf.fit_split(yc, muc),
             "normalized": cf.fit_normalized(yc, muc, sgc),
             "mondrian": cf.fit_mondrian(yc, muc, nnc),
+            "mondrian_normalized": cf.fit_mondrian_normalized(yc, muc, sgc, nnc),
         }
         for k, f in fits.items():
             lo, hi = f.predict(mut, sgt, nnt)
             hit = (yt >= lo) & (yt <= hi)
             cov[k].append(hit.mean())
-            if k == "mondrian":
+            if k.startswith("mondrian"):
                 far = nnt > 0.75
                 bins.append(hit[far].mean())
     for k, v in cov.items():
@@ -71,7 +72,7 @@ def test_bin_edges_with_ties():
 
 
 def test_calibration_api_has_no_test_inputs():
-    for fit in (cf.fit_split, cf.fit_normalized, cf.fit_mondrian):
+    for fit in (cf.fit_split, cf.fit_normalized, cf.fit_mondrian, cf.fit_mondrian_normalized):
         assert not [p for p in inspect.signature(fit).parameters if "test" in p]
     assert not [p for p in inspect.signature(cf.Fitted.predict).parameters if p.startswith("y")]
 
@@ -89,4 +90,4 @@ def test_test_labels_do_not_change_intervals():
     df2.loc[df2["split"] == "test", "y"] = 1e6  # mock: garbage test labels
     pd.testing.assert_frame_equal(a, cf.intervals_for_run(df2))
     assert set(a["source"]) == set(cf.SOURCES) and set(a["variant"]) == set(cf.VARIANTS)
-    assert len(a) == 40 * 6
+    assert len(a) == 40 * 8

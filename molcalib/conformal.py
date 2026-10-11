@@ -13,7 +13,7 @@ import pandas as pd
 from molcalib import config
 
 SOURCES = ("naive_cal", "valid")
-VARIANTS = ("split", "normalized", "mondrian")
+VARIANTS = ("split", "normalized", "mondrian", "mondrian_normalized")
 N_BINS = 4
 
 
@@ -48,7 +48,7 @@ class Fitted:
 
     def predict(self, mu, sigma=None, nn_dist=None) -> tuple[np.ndarray, np.ndarray]:
         """Intervals (lo, hi) for test inputs; sigma is needed for "normalized", nn_dist for
-        "mondrian"."""
+        and "mondrian_normalized"."""
         mu = np.asarray(mu, dtype=float)
         if self.kind == "split":
             half = np.full(mu.shape, self.q[0])
@@ -56,6 +56,8 @@ class Fitted:
             half = self.q[0] * np.asarray(sigma, dtype=float)
         else:
             half = self.q[np.searchsorted(self.edges, np.asarray(nn_dist), side="left")]
+            if self.kind == "mondrian_normalized":
+                half = half * np.asarray(sigma, dtype=float)
         return mu - half, mu + half
 
 
@@ -81,6 +83,18 @@ def fit_mondrian(y_cal, mu_cal, nn_cal, alpha: float = config.ALPHA, n_bins: int
     return Fitted("mondrian", q, edges)
 
 
+def fit_mondrian_normalized(
+    y_cal, mu_cal, sigma_cal, nn_cal, alpha: float = config.ALPHA, n_bins: int = N_BINS
+) -> Fitted:
+    """Like fit_mondrian but the score is |y - mu| / sigma_total; interval mu +- q_bin * sigma_total."""
+    scores = np.abs(np.asarray(y_cal) - np.asarray(mu_cal)) / np.asarray(sigma_cal)
+    nn_cal = np.asarray(nn_cal)
+    edges = nn_bin_edges(nn_cal, n_bins)
+    bins = np.searchsorted(edges, nn_cal, side="left")
+    q = np.array([conformal_quantile(scores[bins == b], alpha) for b in range(len(edges) + 1)])
+    return Fitted("mondrian_normalized", q, edges)
+
+
 def intervals_for_run(pred: pd.DataFrame, alpha: float = config.ALPHA) -> pd.DataFrame:
     """All (source, variant) intervals for one prediction file (columns of cache/preds).
 
@@ -95,6 +109,9 @@ def intervals_for_run(pred: pd.DataFrame, alpha: float = config.ALPHA) -> pd.Dat
             "split": fit_split(cal["y"], cal["mu"], alpha),
             "normalized": fit_normalized(cal["y"], cal["mu"], cal["sigma_total"], alpha),
             "mondrian": fit_mondrian(cal["y"], cal["mu"], cal["nn_dist"], alpha),
+            "mondrian_normalized": fit_mondrian_normalized(
+                cal["y"], cal["mu"], cal["sigma_total"], cal["nn_dist"], alpha
+            ),
         }
         for variant, fit in fits.items():
             lo, hi = fit.predict(test["mu"], test["sigma_total"], test["nn_dist"])

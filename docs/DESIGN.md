@@ -15,3 +15,9 @@
 - **Why:** Plan requires no checkpoint selection and fixed configuration; these are the library defaults or the smallest choice consistent with the plan.
 - **Alternatives rejected:** validation loader for logging (adds nothing, risks selection); variance floor (changes the chemprop head); ddof=1 (not the mixture variance of Lakshminarayanan et al.).
 - **Cost in hours:** 0.
+
+### DR-002: two Mondrian conformal variants
+- **Decision:** "mondrian" uses the score |y - mu| with one quantile per nearest-neighbour-distance bin; "mondrian_normalized" uses |y - mu| / sigma_total per bin and an interval mu +- q_bin * sigma_total. Bins are calibration-set quartiles (merged if tied). If a bin has too few calibration points for the 90% quantile, its interval is infinite.
+- **Why:** the plan names "Mondrian" without a score; the user asked for both.
+- **Alternatives rejected:** a single variant.
+- **Cost in hours:** 0.3.
