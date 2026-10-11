@@ -5,6 +5,8 @@ after the last epoch is used.
 """
 
 import logging
+import os
+import time
 from pathlib import Path
 
 import numpy as np
@@ -53,6 +55,22 @@ def _eval_loader(smiles):
     return build_dataloader(_dataset(smiles), batch_size=config.BATCH_SIZE, shuffle=False)
 
 
+def _write_parquet(df: pd.DataFrame, path: Path) -> None:
+    """Atomic write: the final file only exists once complete (it is the resume marker)."""
+    tmp = path.with_name(path.name + ".tmp")
+    df.to_parquet(tmp, index=False)
+    os.replace(tmp, path)
+
+
+def _timed_train(fit, seed, epochs, device, seconds: list[float]):
+    t0 = time.perf_counter()
+    model = train_model(fit, seed, epochs, device)
+    if device.startswith("cuda"):
+        torch.cuda.synchronize(device)
+    seconds.append(time.perf_counter() - t0)
+    return model
+
+
 def _frame(df: pd.DataFrame, agg: dict[str, np.ndarray]) -> pd.DataFrame:
     out = df[["smiles", "split", "scaffold_id", "y", "nn_dist"]].copy()
     for k, v in agg.items():
@@ -71,22 +89,24 @@ def run_task_seed(
     n_members: int = config.N_MEMBERS,
     mc_t: int = config.MC_T,
     device: str = "cpu",
-) -> Path:
+) -> tuple[Path, list[float]]:
     """Train and predict for one (task, split seed, method); write cache/preds-style parquet.
 
     method "ensemble": n_members models, dropout off at inference; the raw per-member
     predictions are also written to {task}_s{seed}_ensemble_members.parquet.
     method "mcd": one model, mc_t stochastic passes with only nn.Dropout in train mode.
+    Returns the output path and the wall seconds of each training.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     fit = split_df[split_df["split"] == "train_fit"]
     pred = split_df[split_df["split"].isin(PRED_SPLITS)].reset_index()  # keeps file row index
     loader = _eval_loader(pred["smiles"].tolist())
+    seconds: list[float] = []
 
     if method == "ensemble":
         mus, vars_ = [], []
         for k in range(n_members):
-            model = train_model(fit, config.member_seed(seed, k), epochs, device)
+            model = _timed_train(fit, config.member_seed(seed, k), epochs, device, seconds)
             model.eval()
             mu, var = predict_mve(model, loader, device)
             mus.append(mu)
@@ -99,10 +119,10 @@ def run_task_seed(
                 "var": np.concatenate(vars_),
             }
         )
-        members.to_parquet(out_dir / f"{task}_s{seed}_ensemble_members.parquet", index=False)
+        _write_parquet(members, out_dir / f"{task}_s{seed}_ensemble_members.parquet")
         agg = aggregate(np.stack(mus), np.stack(vars_))
     elif method == "mcd":
-        model = train_model(fit, config.mcd_seed(seed), epochs, device)
+        model = _timed_train(fit, config.mcd_seed(seed), epochs, device, seconds)
         set_mc_dropout(model)
         torch.manual_seed(config.mcd_seed(seed))
         passes = [predict_mve(model, loader, device) for _ in range(mc_t)]
@@ -111,5 +131,5 @@ def run_task_seed(
         raise ValueError(f"unknown method: {method}")
 
     path = out_dir / f"{task}_s{seed}_{method}.parquet"
-    _frame(pred, agg).to_parquet(path, index=False)
-    return path
+    _write_parquet(_frame(pred, agg), path)
+    return path, seconds
