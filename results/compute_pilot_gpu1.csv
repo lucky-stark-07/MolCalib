@@ -1,0 +1,7 @@
+timestamp,git_commit,task,seed,method,device,epochs,n_models,train_s,wall_s,status
+2026-10-11T10:17:51+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,caco2_wang,2,mcd,cuda:1,60,1,8.6,9.69,ok
+2026-10-11T10:18:00+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,lipophilicity_astrazeneca,2,mcd,cuda:1,60,1,28.28,33.23,ok
+2026-10-11T10:18:33+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,solubility_aqsoldb,2,mcd,cuda:1,60,1,60.29,68.92,ok
+2026-10-11T10:19:42+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,caco2_wang,2,ensemble,cuda:1,60,5,31.26,31.72,ok
+2026-10-11T10:20:14+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,lipophilicity_astrazeneca,2,ensemble,cuda:1,60,5,139.86,141.67,ok
+2026-10-11T10:22:36+00:00,a0d3f8ad99af510749e4e1fbdff40e48ab21b689,solubility_aqsoldb,2,ensemble,cuda:1,60,5,299.92,303.2,ok
