@@ -21,3 +21,9 @@
 - **Why:** the plan names "Mondrian" without a score; the user asked for both.
 - **Alternatives rejected:** a single variant.
 - **Cost in hours:** 0.3.
+
+### DR-003: T8 metric definitions not fixed by the plan
+- **Decision:** (a) Miscalibration area = mean |observed - expected| coverage of central Gaussian intervals mu +- z sigma_total at levels 0.1, ..., 0.9; also reported signed (negative = intervals too narrow). (b) NLL uses sigma_total. (c) Selective prediction ranks by sigma_total, keeps the ceil(f*n) smallest. (d) Coverage-by-distance uses test-set quartiles of nn_dist (same tie handling as the Mondrian bins). (e) Every results CSV carries the git commit of the code that produced it.
+- **Why:** smallest definitions consistent with the plan's wording.
+- **Alternatives rejected:** integrating the calibration curve over [0, 1] (needs more levels; same ranking); calibration-set bins for the test breakdown (bins would differ per calibration source).
+- **Cost in hours:** 0.
