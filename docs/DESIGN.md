@@ -39,3 +39,38 @@
 - **Why:** the main question (naive_cal vs valid calibration) depends on calibration-set sampling, which the test-only CI ignores; e.g. split-conformal width had a zero-width test-only CI.
 - **Alternatives rejected:** replacing the plan's CI (user asked to report both).
 - **Cost in hours:** 0.5.
+
+### DR-006: post-hoc robustness checks of the calibration-source result
+- **Decision:** All three checks were chosen after seeing the results, in response to review
+  comments, and are labelled post hoc in summary.md and the README. The planned analyses are
+  unchanged (every earlier number in results/ is reproduced exactly).
+  (a) Size-matched control: for each task, seed and base method, split and normalized conformal
+  are refit on R = 200 subsamples of `valid`, drawn without replacement, each the size of that
+  seed's `naive_cal` (source "valid_sizematched"). The existing fit_* functions are reused.
+  Subsamples are seeded by (SIZE_MATCH_SEED = 0, split seed) in config, so ensemble and MC
+  dropout of one seed share them. Reported: test coverage, mean width and Winkler score averaged
+  over the subsamples, mean ± sd over seeds, and the test-only bootstrap CI (the subsample average
+  of each per-molecule value is bootstrapped like any other metric). No calibration-resampling
+  CI and no paired comparison for this control.
+  (b) Winkler (interval) score at alpha = 0.1, mean over test molecules of
+  (hi − lo) + (2/alpha)(lo − y)[y < lo] + (2/alpha)(y − hi)[y > hi], for every conformal variant
+  and calibration source: in the per-seed metrics, the seed aggregation, both CIs (test, and
+  test + calibration as in DR-005) and the `valid` − `naive_cal` paired comparisons. It is not
+  added to the ensemble − MC dropout comparisons. An infinite interval scores inf, and infinite
+  values are handled as for mean_width (DR-004 f).
+  (c) Mechanism check: median |y − μ| on `naive_cal`, `valid` and test, per task, method and
+  seed, with mean ± sd over seeds. Descriptive only; no test.
+- **Why:** a reviewer pointed out that (a) `naive_cal` is smaller than `valid` on every task and
+  seed, so calibration-set size is confounded with calibration source; (b) higher coverage can
+  come from wider intervals alone, and coverage plus width give no single measure of interval
+  quality; (c) `naive_cal` shares more scaffolds with `train_fit` than test does, so its errors
+  may understate test errors. The Winkler score combines width and misses in one proper scoring
+  rule for central intervals.
+- **Alternatives rejected:** comparing coverage at matched width. For split conformal both
+  sources use the same model and a constant margin, so at matched width the two sources give
+  identical intervals and the comparison is empty by construction; the same holds for normalized
+  conformal (one scale factor times σ). Bootstrap resampling of `valid` to the `naive_cal` size
+  (with replacement: duplicates change the quantile). A paired test for the size-matched control
+  or for the median errors (adds comparisons to an analysis that already has no
+  multiple-comparison correction).
+- **Cost in hours:** 1.5.
