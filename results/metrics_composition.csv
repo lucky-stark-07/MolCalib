@@ -1,0 +1,361 @@
+git_commit,task,seed,method,source,variant,coverage,mean_width,median_width,n_infinite,winkler,threshold,n_naive_cal,n_removed,n_remaining,n_groups_removed,removed_scaffolds
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop05,split,0.917582,1.49432,1.49432,0,1.87213,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop05,normalized,0.934066,1.60306,1.60618,0,1.85298,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop05,mondrian,0.93956,1.88242,1.49432,0,2.1414,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop05,mondrian_normalized,0.967033,1.94848,1.83995,0,2.05693,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop02,split,0.950549,1.75515,1.75515,0,1.95158,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop02,normalized,0.945055,1.68819,1.69148,0,1.88737,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop02,mondrian,0.93956,1.88849,1.49432,0,2.14747,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop02,mondrian_normalized,0.967033,1.95245,1.84258,0,2.0609,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop10,split,0.923077,1.56762,1.56762,0,1.88738,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop10,normalized,0.945055,1.68819,1.69148,0,1.88737,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop10,mondrian,0.93956,1.85817,1.49432,0,2.11715,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,ensemble,naive_cal_drop10,mondrian_normalized,0.967033,1.93343,1.83545,0,2.04188,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop05,split,0.928571,1.62438,1.62438,0,1.87568,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop05,normalized,0.934066,1.70561,1.69875,0,1.89028,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop05,mondrian,0.956044,1.98458,1.62438,0,2.14856,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop05,mondrian_normalized,0.978022,2.0205,1.88253,0,2.08958,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop02,split,0.950549,1.76888,1.76888,0,1.94065,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop02,normalized,0.950549,1.76461,1.75751,0,1.91536,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop02,mondrian,0.956044,1.99156,1.62438,0,2.15554,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop02,mondrian_normalized,0.978022,2.02516,1.89018,0,2.09424,0.02,64,13,51,5,'C=C(c1ccccc1)C1OCCCO1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' '' 'c1ccccc1' 'c1ccncc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop10,split,0.928571,1.62438,1.62438,0,1.87568,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop10,normalized,0.950549,1.76461,1.75751,0,1.91536,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop10,mondrian,0.956044,1.95663,1.62438,0,2.12061,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,1,mcd,naive_cal_drop10,mondrian_normalized,0.978022,2.00179,1.87513,0,2.07086,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop05,split,0.928571,2.05986,2.05986,0,2.38133,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop05,normalized,0.945055,2.02282,2.10002,0,2.1488,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop05,mondrian,1,3.67788,4.58478,0,3.67788,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop05,mondrian_normalized,0.983516,2.67362,2.62008,0,2.7281,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop02,split,0.945055,2.17957,2.17957,0,2.42933,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop02,normalized,0.961538,2.18081,2.26404,0,2.22464,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop02,mondrian,0.994505,3.60338,4.58478,0,3.6084,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop02,mondrian_normalized,0.989011,2.71934,2.70949,0,2.72355,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop10,split,0.928571,2.03805,2.03805,0,2.3751,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop10,normalized,0.934066,1.87563,1.94721,0,2.10293,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop10,mondrian,1,3.8318,4.58478,0,3.8318,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,ensemble,naive_cal_drop10,mondrian_normalized,0.983516,2.74532,2.85505,0,2.7998,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop05,split,0.93956,2.16281,2.16281,0,2.40397,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop05,normalized,0.956044,1.96769,1.96604,0,2.07411,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop05,mondrian,1,3.55848,4.37596,0,3.55848,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop05,mondrian_normalized,0.989011,2.40246,2.50055,0,2.42606,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop02,split,0.950549,2.19473,2.19473,0,2.41729,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop02,normalized,0.961538,2.04715,2.04543,0,2.11927,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop02,mondrian,0.994505,3.48695,4.37596,0,3.48856,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop02,mondrian_normalized,0.994505,2.3862,2.47966,0,2.40048,0.02,64,18,46,7,'' 'c1cscn1' 'O=C(Nc1ccccc1)c1ccnn1CCc1ccncc1' 'c1ccccc1' 'O=C1C=C2C3CCCC3CCC2C2CCCCC12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop10,split,0.934066,2.11352,2.11352,0,2.38565,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop10,normalized,0.950549,1.83981,1.83826,0,2.01126,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop10,mondrian,1,3.69224,4.37596,0,3.69224,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,2,mcd,naive_cal_drop10,mondrian_normalized,0.989011,2.43747,2.52824,0,2.46107,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop05,split,0.895604,1.32763,1.32763,0,2.06235,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop05,normalized,0.950549,1.75446,1.71064,0,1.92223,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop05,mondrian,0.912088,1.59573,1.24217,0,2.13151,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop05,mondrian_normalized,0.978022,2.37351,2.24989,0,2.40196,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop02,split,0.884615,1.30687,1.30687,0,2.06451,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop02,normalized,0.945055,1.66496,1.62337,0,1.88032,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop02,mondrian,0.895604,1.42717,1.45862,0,2.09744,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop02,mondrian_normalized,0.956044,1.86986,1.82289,0,1.96518,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop10,split,0.89011,1.32095,1.32095,0,2.0628,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop10,normalized,0.950549,1.75072,1.70699,0,1.92044,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop10,mondrian,0.906593,1.57798,1.24217,0,2.11568,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,ensemble,naive_cal_drop10,mondrian_normalized,0.978022,2.34834,2.19091,0,2.37678,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop05,split,0.873626,1.37546,1.37546,0,1.99622,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop05,normalized,0.906593,1.5126,1.46659,0,1.87665,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop05,mondrian,0.928571,1.63026,1.51516,0,1.99755,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop05,mondrian_normalized,0.989011,2.19868,2.1084,0,2.22891,0.05,64,6,58,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop02,split,0.862637,1.26464,1.26464,0,2.03627,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop02,normalized,0.901099,1.48697,1.44174,0,1.87627,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop02,mondrian,0.879121,1.45107,1.37546,0,2.03327,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop02,mondrian_normalized,0.934066,1.695,1.62462,0,1.95229,0.02,64,12,52,4,'' 'c1ccccc1' 'O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCCc1ccccc1' 'O=S(=O)(Nc1nncs1)c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop10,split,0.868132,1.3685,1.3685,0,1.99822,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop10,normalized,0.906593,1.50799,1.46212,0,1.87647,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop10,mondrian,0.928571,1.62322,1.51516,0,1.99051,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,3,mcd,naive_cal_drop10,mondrian_normalized,0.989011,2.1855,2.08326,0,2.21573,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop05,split,0.89011,1.57039,1.57039,0,1.92355,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop05,normalized,0.901099,1.44854,1.44115,0,1.84853,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop05,mondrian,0.961538,2.10347,1.71896,0,2.23847,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop05,mondrian_normalized,0.967033,2.00525,1.97396,0,2.07661,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop02,split,0.895604,1.58428,1.58428,0,1.92228,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop02,normalized,0.93956,1.74928,1.74035,0,1.94782,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop02,mondrian,0.945055,2.06725,1.71896,0,2.2223,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop02,mondrian_normalized,0.956044,2.03372,2.01746,0,2.12197,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop10,split,0.89011,1.57039,1.57039,0,1.92355,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop10,normalized,0.901099,1.44854,1.44115,0,1.84853,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop10,mondrian,0.961538,2.09824,1.71896,0,2.23324,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,ensemble,naive_cal_drop10,mondrian_normalized,0.967033,2.00238,1.95997,0,2.07374,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop05,split,0.873626,1.54777,1.54777,0,2.10596,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop05,normalized,0.934066,1.72763,1.70089,0,1.92875,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop05,mondrian,0.961538,2.33951,2.20575,0,2.41256,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop05,mondrian_normalized,0.989011,2.27162,2.33537,0,2.279,0.05,64,5,59,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop02,split,0.879121,1.56004,1.56004,0,2.10293,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop02,normalized,0.961538,1.88461,1.85544,0,2.00318,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop02,mondrian,0.945055,2.28147,2.20575,0,2.39209,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop02,mondrian_normalized,0.972527,2.23039,2.33161,0,2.27788,0.02,64,15,49,6,'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'c1ccccc1' 'c1ccc(Cc2ncccn2)cc1' 'c1ccc2c(CC3CC4CCN3CC4)ccnc2c1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'O=C(NCCc1ccccc1)C1CSCN1S(=O)(=O)c1cn[nH]c1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop10,split,0.873626,1.54777,1.54777,0,2.10596,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop10,normalized,0.934066,1.72763,1.70089,0,1.92875,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop10,mondrian,0.961538,2.33447,2.20575,0,2.40753,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,4,mcd,naive_cal_drop10,mondrian_normalized,0.989011,2.26849,2.33537,0,2.27587,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop05,split,0.950549,1.83849,1.83849,0,1.99157,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop05,normalized,0.961538,1.9524,1.91303,0,2.07405,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop05,mondrian,0.956044,2.38251,1.84005,0,2.44743,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop05,mondrian_normalized,0.978022,2.27017,2.2108,0,2.30186,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop02,split,0.93956,1.66917,1.66917,0,1.91527,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop02,normalized,0.961538,2.02479,1.98396,0,2.12459,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop02,mondrian,0.945055,2.18802,1.66917,0,2.36716,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop02,mondrian_normalized,0.972527,2.26288,2.21049,0,2.29568,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop10,split,0.950549,1.83849,1.83849,0,1.99157,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop10,normalized,0.961538,1.9524,1.91303,0,2.07405,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop10,mondrian,0.956044,2.38251,1.84005,0,2.44743,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,ensemble,naive_cal_drop10,mondrian_normalized,0.978022,2.27017,2.2108,0,2.30186,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop05,split,0.934066,1.63367,1.63367,0,1.88772,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop05,normalized,0.93956,1.6937,1.66462,0,1.8915,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop05,mondrian,0.945055,2.22353,1.93023,0,2.37083,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop05,mondrian_normalized,0.983516,2.10652,2.09028,0,2.17465,0.05,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop02,split,0.934066,1.63097,1.63097,0,1.8868,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop02,normalized,0.961538,1.91023,1.87743,0,2.03077,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop02,mondrian,0.945055,2.09884,1.63367,0,2.25331,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop02,mondrian_normalized,0.978022,2.08047,2.05158,0,2.14874,0.02,64,18,46,8,'c1cscn1' 'O=C(NS(=O)(=O)c1ccccc1)C(c1ccc2c(c1)OCO2)c1c[nH]c2ccccc12' 'O=C(CC(Cc1ccccc1)NS(=O)(=O)c1ccc2ccccc2c1)N1CCCCC1' 'O=c1ccn(C2C=CC(CO[PH](=O)Oc3ccccc3)O2)c(=O)[nH]1' 'O=c1ccn(C2CCCO2)c(=O)[nH]1' 'c1ccncc1' 'O=C1C=CC2C(=C1)CCC1C3CCCC3CCC21' 'O=C(CCc1ccccc1)N1CCN(c2ccccc2)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop10,split,0.934066,1.63367,1.63367,0,1.88772,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop10,normalized,0.93956,1.6937,1.66462,0,1.8915,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop10,mondrian,0.945055,2.22353,1.93023,0,2.37083,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,caco2_wang,5,mcd,naive_cal_drop10,mondrian_normalized,0.983516,2.10652,2.09028,0,2.17465,0.1,64,0,64,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop05,split,0.886905,1.75889,1.75889,0,2.6069,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop05,normalized,0.846429,1.64504,1.62492,0,2.61886,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop05,mondrian,0.914286,2.02145,1.67608,0,2.58396,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop05,mondrian_normalized,0.879762,2.0768,1.66318,0,2.70048,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop02,split,0.880952,1.73071,1.73071,0,2.61134,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop02,normalized,0.842857,1.62388,1.60402,0,2.62942,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop02,mondrian,0.910714,2.05176,1.53938,0,2.62122,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop02,mondrian_normalized,0.891667,2.15636,1.69995,0,2.72836,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop10,split,0.886905,1.75889,1.75889,0,2.6069,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop10,normalized,0.846429,1.64504,1.62492,0,2.61886,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop10,mondrian,0.914286,2.02145,1.67608,0,2.58396,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,ensemble,naive_cal_drop10,mondrian_normalized,0.879762,2.0768,1.66318,0,2.70048,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop05,split,0.890476,1.86579,1.86579,0,2.67902,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop05,normalized,0.875,1.80209,1.77226,0,2.68899,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop05,mondrian,0.915476,2.03566,1.68614,0,2.6402,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop05,mondrian_normalized,0.892857,2.03638,1.63184,0,2.73747,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop02,split,0.867857,1.75157,1.75157,0,2.70046,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop02,normalized,0.87381,1.79111,1.76146,0,2.69119,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop02,mondrian,0.920238,2.08349,1.68697,0,2.67741,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop02,mondrian_normalized,0.89881,2.09294,1.657,0,2.76966,0.02,294,13,281,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop10,split,0.890476,1.86579,1.86579,0,2.67902,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop10,normalized,0.875,1.80209,1.77226,0,2.68899,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop10,mondrian,0.915476,2.03566,1.68614,0,2.6402,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,1,mcd,naive_cal_drop10,mondrian_normalized,0.892857,2.03638,1.63184,0,2.73747,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop05,split,0.902381,1.88511,1.88511,0,2.60207,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop05,normalized,0.871429,1.79487,1.73493,0,2.64852,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop05,mondrian,0.895238,1.87462,1.79264,0,2.55264,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop05,mondrian_normalized,0.880952,2.01505,1.76346,0,2.64257,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop02,split,0.902381,1.88511,1.88511,0,2.60207,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop02,normalized,0.871429,1.79506,1.73511,0,2.64848,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop02,mondrian,0.892857,1.85834,1.75982,0,2.54972,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop02,mondrian_normalized,0.880952,2.01121,1.76296,0,2.63873,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop10,split,0.902381,1.88511,1.88511,0,2.60207,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop10,normalized,0.871429,1.79487,1.73493,0,2.64852,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop10,mondrian,0.895238,1.87462,1.79264,0,2.55264,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,ensemble,naive_cal_drop10,mondrian_normalized,0.880952,2.01505,1.76346,0,2.64257,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop05,split,0.896429,1.97912,1.97912,0,2.73887,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop05,normalized,0.892857,1.94467,1.88521,0,2.73175,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop05,mondrian,0.904762,2.07676,1.93674,0,2.6815,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop05,mondrian_normalized,0.883333,2.06139,1.79431,0,2.76122,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop02,split,0.896429,1.97912,1.97912,0,2.73887,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop02,normalized,0.892857,1.94467,1.88521,0,2.73175,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop02,mondrian,0.90119,2.04585,1.87254,0,2.68121,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop02,mondrian_normalized,0.883333,2.04449,1.76602,0,2.76013,0.02,294,12,282,2,'c1ccccc1' 'O=C(NCc1ccccc1)C1CCN(c2ncnc3[nH]ccc23)CC1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop10,split,0.896429,1.97912,1.97912,0,2.73887,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop10,normalized,0.892857,1.94467,1.88521,0,2.73175,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop10,mondrian,0.904762,2.07676,1.93674,0,2.6815,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,2,mcd,naive_cal_drop10,mondrian_normalized,0.883333,2.06139,1.79431,0,2.76122,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop05,split,0.909524,1.9715,1.9715,0,2.63536,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop05,normalized,0.880952,1.86221,1.82545,0,2.62047,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop05,mondrian,0.921429,2.07616,2.10748,0,2.64453,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop05,mondrian_normalized,0.895238,1.96986,1.85932,0,2.6137,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop02,split,0.89881,1.9322,1.9322,0,2.63393,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop02,normalized,0.879762,1.85439,1.81779,0,2.62178,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop02,mondrian,0.92381,2.04806,2.00233,0,2.62565,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop02,mondrian_normalized,0.882143,1.85718,1.75915,0,2.59848,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop10,split,0.909524,1.9715,1.9715,0,2.63536,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop10,normalized,0.880952,1.86221,1.82545,0,2.62047,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop10,mondrian,0.921429,2.07616,2.10748,0,2.64453,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,ensemble,naive_cal_drop10,mondrian_normalized,0.895238,1.96986,1.85932,0,2.6137,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop05,split,0.896429,1.93844,1.93844,0,2.73325,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop05,normalized,0.902381,1.97977,1.93288,0,2.74492,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop05,mondrian,0.927381,2.12535,2.22125,0,2.7307,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop05,mondrian_normalized,0.902381,2.12588,1.98016,0,2.78451,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop02,split,0.896429,1.93356,1.93356,0,2.73343,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop02,normalized,0.902381,1.97658,1.92977,0,2.74466,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop02,mondrian,0.910714,1.9977,1.93844,0,2.6873,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop02,mondrian_normalized,0.896429,2.07228,1.89782,0,2.77468,0.02,294,10,284,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop10,split,0.896429,1.93844,1.93844,0,2.73325,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop10,normalized,0.902381,1.97977,1.93288,0,2.74492,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop10,mondrian,0.927381,2.12535,2.22125,0,2.7307,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,3,mcd,naive_cal_drop10,mondrian_normalized,0.902381,2.12588,1.98016,0,2.78451,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop05,split,0.878571,1.74907,1.74907,0,2.5771,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop05,normalized,0.842857,1.66833,1.64024,0,2.68316,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop05,mondrian,0.920238,1.99901,1.79324,0,2.49159,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop05,mondrian_normalized,0.861905,1.80351,1.763,0,2.59966,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop02,split,0.878571,1.74907,1.74907,0,2.5771,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop02,normalized,0.842857,1.66833,1.64024,0,2.68316,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop02,mondrian,0.916667,1.98594,1.7564,0,2.48978,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop02,mondrian_normalized,0.860714,1.77413,1.72379,0,2.61007,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop10,split,0.878571,1.74907,1.74907,0,2.5771,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop10,normalized,0.842857,1.66833,1.64024,0,2.68316,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop10,mondrian,0.920238,1.99901,1.79324,0,2.49159,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,ensemble,naive_cal_drop10,mondrian_normalized,0.861905,1.80351,1.763,0,2.59966,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop05,split,0.853571,1.68923,1.68923,0,2.61046,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop05,normalized,0.853571,1.71092,1.68732,0,2.6498,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop05,mondrian,0.885714,1.80886,1.62159,0,2.50457,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop05,mondrian_normalized,0.870238,1.8209,1.75052,0,2.56293,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop02,split,0.858333,1.70399,1.70399,0,2.60399,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop02,normalized,0.859524,1.73911,1.71512,0,2.63982,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop02,mondrian,0.885714,1.8097,1.62159,0,2.50541,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop02,mondrian_normalized,0.870238,1.82223,1.75052,0,2.56426,0.02,294,7,287,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop10,split,0.853571,1.68923,1.68923,0,2.61046,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop10,normalized,0.853571,1.71092,1.68732,0,2.6498,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop10,mondrian,0.885714,1.80886,1.62159,0,2.50457,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,4,mcd,naive_cal_drop10,mondrian_normalized,0.870238,1.8209,1.75052,0,2.56293,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop05,split,0.902381,1.7686,1.7686,0,2.48355,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop05,normalized,0.883333,1.79197,1.73761,0,2.46666,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop05,mondrian,0.922619,2.02584,2.07287,0,2.51532,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop05,mondrian_normalized,0.902381,1.89685,1.80727,0,2.46741,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop02,split,0.904762,1.77507,1.77507,0,2.48377,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop02,normalized,0.885714,1.80268,1.748,0,2.46555,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop02,mondrian,0.921429,1.98942,2.07287,0,2.54047,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop02,mondrian_normalized,0.89881,1.8836,1.78898,0,2.47689,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop10,split,0.902381,1.7686,1.7686,0,2.48355,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop10,normalized,0.883333,1.79197,1.73761,0,2.46666,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop10,mondrian,0.922619,2.02584,2.07287,0,2.51532,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,ensemble,naive_cal_drop10,mondrian_normalized,0.902381,1.89685,1.80727,0,2.46741,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop05,split,0.919048,2.05348,2.05348,0,2.65275,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop05,normalized,0.904762,2.04115,1.98634,0,2.67469,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop05,mondrian,0.936905,2.28671,2.26541,0,2.7037,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop05,mondrian_normalized,0.919048,2.13227,2.05059,0,2.66514,0.05,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop02,split,0.920238,2.05746,2.05746,0,2.65356,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop02,normalized,0.908333,2.05918,2.00388,0,2.67675,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop02,mondrian,0.929762,2.25218,2.26541,0,2.70988,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop02,mondrian_normalized,0.915476,2.11,2.01446,0,2.66508,0.02,294,6,288,1,'O=c1ccn(C2CCCN(Cc3cccc(Oc4ccccc4)c3)C2)c(=O)[nH]1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop10,split,0.919048,2.05348,2.05348,0,2.65275,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop10,normalized,0.904762,2.04115,1.98634,0,2.67469,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop10,mondrian,0.936905,2.28671,2.26541,0,2.7037,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,lipophilicity_astrazeneca,5,mcd,naive_cal_drop10,mondrian_normalized,0.919048,2.13227,2.05059,0,2.66514,0.1,294,0,294,0,
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop05,split,0.898747,3.64311,3.64311,0,5.24178,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop05,normalized,0.85614,3.27176,2.96146,0,5.11265,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop05,mondrian,0.949373,4.50985,4.71445,0,5.498,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop05,mondrian_normalized,0.933333,4.21313,3.79554,0,5.22183,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop02,split,0.908772,3.79865,3.79865,0,5.24974,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop02,normalized,0.873684,3.43327,3.10765,0,5.08515,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop02,mondrian,0.944862,4.47246,4.5881,0,5.48823,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop02,mondrian_normalized,0.916792,4.09064,3.81265,0,5.29554,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop10,split,0.898747,3.64311,3.64311,0,5.24178,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop10,normalized,0.85614,3.27176,2.96146,0,5.11265,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop10,mondrian,0.949373,4.50985,4.71445,0,5.498,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,ensemble,naive_cal_drop10,mondrian_normalized,0.933333,4.21313,3.79554,0,5.22183,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop05,split,0.900752,3.56013,3.56013,0,5.20661,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop05,normalized,0.840602,3.15603,2.89795,0,5.31478,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop05,mondrian,0.937343,4.22494,4.14771,0,5.32135,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop05,mondrian_normalized,0.893734,3.81212,3.36958,0,5.21774,0.05,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop02,split,0.912782,3.72745,3.72745,0,5.21886,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop02,normalized,0.858145,3.33961,3.06651,0,5.27675,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop02,mondrian,0.93183,4.11726,4.14771,0,5.30574,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop02,mondrian_normalized,0.904261,3.8618,3.52384,0,5.25793,0.02,699,489,210,3,'' 'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop10,split,0.900752,3.56013,3.56013,0,5.20661,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop10,normalized,0.840602,3.15603,2.89795,0,5.31478,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop10,mondrian,0.937343,4.22494,4.14771,0,5.32135,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,1,mcd,naive_cal_drop10,mondrian_normalized,0.893734,3.81212,3.36958,0,5.21774,0.1,699,469,230,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop05,split,0.879699,3.13725,3.13725,0,5.19925,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop05,normalized,0.826065,2.88231,2.72097,0,5.12677,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop05,mondrian,0.921805,3.8682,4.33292,0,5.1724,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop05,mondrian_normalized,0.901253,3.99531,3.57402,0,5.17557,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop02,split,0.879699,3.13725,3.13725,0,5.19925,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop02,normalized,0.826065,2.88231,2.72097,0,5.12677,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop02,mondrian,0.921805,3.8682,4.33292,0,5.1724,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop02,mondrian_normalized,0.901253,3.99531,3.57402,0,5.17557,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop10,split,0.879699,3.13725,3.13725,0,5.19925,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop10,normalized,0.826065,2.88231,2.72097,0,5.12677,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop10,mondrian,0.921805,3.8682,4.33292,0,5.1724,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,ensemble,naive_cal_drop10,mondrian_normalized,0.901253,3.99531,3.57402,0,5.17557,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop05,split,0.884211,3.20001,3.20001,0,5.16353,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop05,normalized,0.839098,3.0418,2.87176,0,5.21371,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop05,mondrian,0.919799,3.88121,4.62945,0,5.13814,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop05,mondrian_normalized,0.920802,4.47821,3.97144,0,5.47638,0.05,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop02,split,0.884211,3.20001,3.20001,0,5.16353,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop02,normalized,0.839098,3.0418,2.87176,0,5.21371,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop02,mondrian,0.919799,3.88121,4.62945,0,5.13814,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop02,mondrian_normalized,0.920802,4.47821,3.97144,0,5.47638,0.02,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop10,split,0.884211,3.20001,3.20001,0,5.16353,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop10,normalized,0.839098,3.0418,2.87176,0,5.21371,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop10,mondrian,0.919799,3.88121,4.62945,0,5.13814,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,2,mcd,naive_cal_drop10,mondrian_normalized,0.920802,4.47821,3.97144,0,5.47638,0.1,699,479,220,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop05,split,0.916291,3.74022,3.74022,0,5.02757,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop05,normalized,0.884211,3.43017,3.11956,0,4.84072,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop05,mondrian,0.949875,4.61827,4.65463,0,5.38627,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop05,mondrian_normalized,0.938847,4.27447,3.93701,0,5.09553,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop02,split,0.931328,4.01795,4.01795,0,5.09762,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop02,normalized,0.896241,3.54866,3.22731,0,4.85039,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop02,mondrian,0.955388,4.64092,4.65463,0,5.3566,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop02,mondrian_normalized,0.916792,3.98076,3.63061,0,4.98225,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop10,split,0.916291,3.74022,3.74022,0,5.02757,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop10,normalized,0.884211,3.43017,3.11956,0,4.84072,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop10,mondrian,0.949875,4.61827,4.65463,0,5.38627,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,ensemble,naive_cal_drop10,mondrian_normalized,0.938847,4.27447,3.93701,0,5.09553,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop05,split,0.939348,4.28846,4.28846,0,5.27906,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop05,normalized,0.893734,3.64757,3.34446,0,5.03136,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop05,mondrian,0.948371,4.66116,4.7263,0,5.44217,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop05,mondrian_normalized,0.932331,4.37346,3.98805,0,5.24687,0.05,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop02,split,0.941855,4.3821,4.3821,0,5.31691,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop02,normalized,0.903759,3.74502,3.43382,0,5.04939,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop02,mondrian,0.953383,4.68224,4.7263,0,5.43517,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop02,mondrian_normalized,0.919799,4.19933,3.77489,0,5.20564,0.02,699,502,197,3,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop10,split,0.939348,4.28846,4.28846,0,5.27906,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop10,normalized,0.893734,3.64757,3.34446,0,5.03136,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop10,mondrian,0.948371,4.66116,4.7263,0,5.44217,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,3,mcd,naive_cal_drop10,mondrian_normalized,0.932331,4.37346,3.98805,0,5.24687,0.1,699,486,213,2,'c1ccccc1' ''
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop05,split,0.909774,3.67381,3.67381,0,5.19225,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop05,normalized,0.912782,3.64611,3.29032,0,4.90802,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop05,mondrian,0.953885,5.26248,6.61413,0,5.92455,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop05,mondrian_normalized,0.929825,3.84674,3.49871,0,4.89194,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop02,split,0.914787,3.80914,3.80914,0,5.21034,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop02,normalized,0.922807,3.76807,3.40037,0,4.94185,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop02,mondrian,0.932331,4.22889,4.58767,0,5.29008,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop02,mondrian_normalized,0.92782,3.76903,3.43731,0,4.87514,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop10,split,0.909774,3.67381,3.67381,0,5.19225,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop10,normalized,0.912782,3.64611,3.29032,0,4.90802,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop10,mondrian,0.953885,5.26248,6.61413,0,5.92455,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,ensemble,naive_cal_drop10,mondrian_normalized,0.929825,3.84674,3.49871,0,4.89194,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop05,split,0.908772,3.73058,3.73058,0,5.36024,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop05,normalized,0.897243,3.629,3.26537,0,5.16955,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop05,mondrian,0.963409,5.56359,6.97177,0,6.23142,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop05,mondrian_normalized,0.943358,4.37501,3.98506,0,5.35459,0.05,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop02,split,0.911278,3.77355,3.77355,0,5.36467,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop02,normalized,0.906767,3.76529,3.388,0,5.19105,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop02,mondrian,0.940351,4.47552,5.00453,0,5.51364,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop02,mondrian_normalized,0.942857,4.25768,3.86735,0,5.29631,0.02,699,505,194,3,'c1ccc(-c2ccccc2)cc1' '' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop10,split,0.908772,3.73058,3.73058,0,5.36024,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop10,normalized,0.897243,3.629,3.26537,0,5.16955,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop10,mondrian,0.963409,5.56359,6.97177,0,6.23142,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,4,mcd,naive_cal_drop10,mondrian_normalized,0.943358,4.37501,3.98506,0,5.35459,0.1,699,480,219,2,'' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop05,split,0.909774,3.54304,3.54304,0,5.04359,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop05,normalized,0.878195,3.24809,2.97241,0,4.7921,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop05,mondrian,0.925313,4.00059,3.54304,0,5.11825,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop05,mondrian_normalized,0.904762,3.54335,3.27889,0,4.76677,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop02,split,0.908772,3.49665,3.49665,0,5.03933,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop02,normalized,0.878195,3.24809,2.97241,0,4.7921,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop02,mondrian,0.924812,4.0051,3.54304,0,5.1284,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop02,mondrian_normalized,0.886216,3.44101,3.1722,0,4.8091,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop10,split,0.897744,3.38665,3.38665,0,5.03645,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop10,normalized,0.869674,3.135,2.86891,0,4.80824,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop10,mondrian,0.918296,3.85402,3.09675,0,5.05102,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,ensemble,naive_cal_drop10,mondrian_normalized,0.898747,3.43649,3.17622,0,4.73419,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop05,split,0.909273,3.60271,3.60271,0,5.19165,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop05,normalized,0.882206,3.32968,3.06733,0,4.95806,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop05,mondrian,0.926316,4.18989,3.38987,0,5.32916,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop05,mondrian_normalized,0.880702,3.56097,3.25327,0,5.01342,0.05,504,198,306,2,'c1ccc(-c2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop02,split,0.903258,3.49414,3.49414,0,5.18417,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop02,normalized,0.881704,3.3222,3.06044,0,4.95846,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop02,mondrian,0.915789,4.09109,3.20232,0,5.35135,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop02,mondrian_normalized,0.882206,3.60106,3.30116,0,5.04334,0.02,504,210,294,3,'c1ccc(-c2ccccc2)cc1' 'c1ccc(Cc2ccccc2)cc1' 'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop10,split,0.897243,3.39539,3.39539,0,5.18393,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop10,normalized,0.881704,3.32188,3.06015,0,4.95848,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop10,mondrian,0.914787,4.01647,2.93982,0,5.27226,0.1,504,171,333,1,'c1ccccc1'
+4432b8a61f2fa353eecedbb5649ca7083ae8e1ca,solubility_aqsoldb,5,mcd,naive_cal_drop10,mondrian_normalized,0.880702,3.50059,3.22027,0,4.9797,0.1,504,171,333,1,'c1ccccc1'

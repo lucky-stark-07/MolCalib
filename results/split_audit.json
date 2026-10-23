@@ -1,5 +1,5 @@
 {
-  "git_commit": "94b2d712e46d436d5af9130d07e7ff1f72fbb99b",
+  "git_commit": "4432b8a61f2fa353eecedbb5649ca7083ae8e1ca",
   "runs": {
     "caco2_wang_seed1": {
       "n": {
@@ -58,7 +58,71 @@
           "75%": 0.7302,
           "max": 0.8049
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 255,
+          "scaffold": "c1ccccc1",
+          "n": 47,
+          "n_by_split": {
+            "train_fit": 42,
+            "naive_cal": 5,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.07329842931937172,
+            "naive_cal": 0.078125,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 395,
+          "scaffold": "O=C1CNC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CN1",
+          "n": 44,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 0,
+            "test": 44
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.0,
+            "test": 0.24175824175824176
+          },
+          "in_splits": [
+            "test"
+          ]
+        },
+        {
+          "scaffold_id": 149,
+          "scaffold": "",
+          "n": 25,
+          "n_by_split": {
+            "train_fit": 23,
+            "naive_cal": 2,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.04013961605584642,
+            "naive_cal": 0.03125,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "caco2_wang_seed2": {
       "n": {
@@ -117,7 +181,71 @@
           "75%": 0.7302,
           "max": 0.8247
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 246,
+          "scaffold": "c1ccccc1",
+          "n": 47,
+          "n_by_split": {
+            "train_fit": 41,
+            "naive_cal": 6,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.07155322862129145,
+            "naive_cal": 0.09375,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 395,
+          "scaffold": "O=C1CNC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CN1",
+          "n": 44,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 0,
+            "test": 44
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.0,
+            "test": 0.24175824175824176
+          },
+          "in_splits": [
+            "test"
+          ]
+        },
+        {
+          "scaffold_id": 4,
+          "scaffold": "",
+          "n": 25,
+          "n_by_split": {
+            "train_fit": 23,
+            "naive_cal": 2,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.04013961605584642,
+            "naive_cal": 0.03125,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "caco2_wang_seed3": {
       "n": {
@@ -176,7 +304,71 @@
           "75%": 0.7957,
           "max": 0.8333
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 73,
+          "scaffold": "c1ccccc1",
+          "n": 47,
+          "n_by_split": {
+            "train_fit": 41,
+            "naive_cal": 6,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.07155322862129145,
+            "naive_cal": 0.09375,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 395,
+          "scaffold": "O=C1CNC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CN1",
+          "n": 44,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 0,
+            "test": 44
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.0,
+            "test": 0.24175824175824176
+          },
+          "in_splits": [
+            "test"
+          ]
+        },
+        {
+          "scaffold_id": 42,
+          "scaffold": "",
+          "n": 25,
+          "n_by_split": {
+            "train_fit": 23,
+            "naive_cal": 2,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.04013961605584642,
+            "naive_cal": 0.03125,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "caco2_wang_seed4": {
       "n": {
@@ -235,7 +427,71 @@
           "75%": 0.7302,
           "max": 0.8481
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 146,
+          "scaffold": "c1ccccc1",
+          "n": 47,
+          "n_by_split": {
+            "train_fit": 42,
+            "naive_cal": 5,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.07329842931937172,
+            "naive_cal": 0.078125,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 395,
+          "scaffold": "O=C1CNC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CN1",
+          "n": 44,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 0,
+            "test": 44
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.0,
+            "test": 0.24175824175824176
+          },
+          "in_splits": [
+            "test"
+          ]
+        },
+        {
+          "scaffold_id": 91,
+          "scaffold": "",
+          "n": 25,
+          "n_by_split": {
+            "train_fit": 24,
+            "naive_cal": 1,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.041884816753926704,
+            "naive_cal": 0.015625,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "caco2_wang_seed5": {
       "n": {
@@ -294,7 +550,70 @@
           "75%": 0.7302,
           "max": 0.8265
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 351,
+          "scaffold": "c1ccccc1",
+          "n": 47,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 47,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.5164835164835165,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        },
+        {
+          "scaffold_id": 395,
+          "scaffold": "O=C1CNC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CN1",
+          "n": 44,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 0,
+            "test": 44
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.0,
+            "test": 0.24175824175824176
+          },
+          "in_splits": [
+            "test"
+          ]
+        },
+        {
+          "scaffold_id": 183,
+          "scaffold": "",
+          "n": 25,
+          "n_by_split": {
+            "train_fit": 24,
+            "naive_cal": 1,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.041884816753926704,
+            "naive_cal": 0.015625,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "lipophilicity_astrazeneca_seed1": {
       "n": {
@@ -353,7 +672,72 @@
           "75%": 0.6,
           "max": 0.8485
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 354,
+          "scaffold": "c1ccccc1",
+          "n": 76,
+          "n_by_split": {
+            "train_fit": 63,
+            "naive_cal": 13,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.023809523809523808,
+            "naive_cal": 0.04421768707482993,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 773,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 36,
+          "n_by_split": {
+            "train_fit": 32,
+            "naive_cal": 4,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.012093726379440665,
+            "naive_cal": 0.013605442176870748,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 195,
+          "scaffold": "O=C(Cc1ccccc1)NC1CCN(CCC(c2ccccc2)c2ccccc2)CC1",
+          "n": 28,
+          "n_by_split": {
+            "train_fit": 25,
+            "naive_cal": 3,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.00944822373393802,
+            "naive_cal": 0.01020408163265306,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "lipophilicity_astrazeneca_seed2": {
       "n": {
@@ -412,7 +796,71 @@
           "75%": 0.5968,
           "max": 0.8485
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 499,
+          "scaffold": "c1ccccc1",
+          "n": 76,
+          "n_by_split": {
+            "train_fit": 70,
+            "naive_cal": 6,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.026455026455026454,
+            "naive_cal": 0.02040816326530612,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1692,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 36,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 36,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.08571428571428572,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        },
+        {
+          "scaffold_id": 766,
+          "scaffold": "O=C(Cc1ccccc1)NC1CCN(CCC(c2ccccc2)c2ccccc2)CC1",
+          "n": 28,
+          "n_by_split": {
+            "train_fit": 26,
+            "naive_cal": 2,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.009826152683295541,
+            "naive_cal": 0.006802721088435374,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "lipophilicity_astrazeneca_seed3": {
       "n": {
@@ -471,7 +919,71 @@
           "75%": 0.6,
           "max": 0.8485
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 1526,
+          "scaffold": "c1ccccc1",
+          "n": 76,
+          "n_by_split": {
+            "train_fit": 66,
+            "naive_cal": 10,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.024943310657596373,
+            "naive_cal": 0.034013605442176874,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1629,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 36,
+          "n_by_split": {
+            "train_fit": 34,
+            "naive_cal": 2,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.012849584278155708,
+            "naive_cal": 0.006802721088435374,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1758,
+          "scaffold": "O=C(Cc1ccccc1)NC1CCN(CCC(c2ccccc2)c2ccccc2)CC1",
+          "n": 28,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 28,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.06666666666666667,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        }
+      ]
     },
     "lipophilicity_astrazeneca_seed4": {
       "n": {
@@ -530,7 +1042,71 @@
           "75%": 0.6006,
           "max": 0.8485
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 320,
+          "scaffold": "c1ccccc1",
+          "n": 76,
+          "n_by_split": {
+            "train_fit": 69,
+            "naive_cal": 7,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.026077097505668934,
+            "naive_cal": 0.023809523809523808,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 726,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 36,
+          "n_by_split": {
+            "train_fit": 33,
+            "naive_cal": 3,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.012471655328798186,
+            "naive_cal": 0.01020408163265306,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1909,
+          "scaffold": "O=C(Cc1ccccc1)NC1CCN(CCC(c2ccccc2)c2ccccc2)CC1",
+          "n": 28,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 28,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.06666666666666667,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        }
+      ]
     },
     "lipophilicity_astrazeneca_seed5": {
       "n": {
@@ -589,7 +1165,71 @@
           "75%": 0.6,
           "max": 0.8485
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 1735,
+          "scaffold": "c1ccccc1",
+          "n": 76,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 76,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.18095238095238095,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        },
+        {
+          "scaffold_id": 1628,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 36,
+          "n_by_split": {
+            "train_fit": 32,
+            "naive_cal": 4,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.012093726379440665,
+            "naive_cal": 0.013605442176870748,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1013,
+          "scaffold": "O=C(Cc1ccccc1)NC1CCN(CCC(c2ccccc2)c2ccccc2)CC1",
+          "n": 28,
+          "n_by_split": {
+            "train_fit": 24,
+            "naive_cal": 4,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.009070294784580499,
+            "naive_cal": 0.013605442176870748,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "solubility_aqsoldb_seed1": {
       "n": {
@@ -648,7 +1288,72 @@
           "75%": 0.6538,
           "max": 0.8889
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 164,
+          "scaffold": "",
+          "n": 2940,
+          "n_by_split": {
+            "train_fit": 2644,
+            "naive_cal": 296,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.420550341975505,
+            "naive_cal": 0.4234620886981402,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 649,
+          "scaffold": "c1ccccc1",
+          "n": 1753,
+          "n_by_split": {
+            "train_fit": 1580,
+            "naive_cal": 173,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.2513122315889932,
+            "naive_cal": 0.2474964234620887,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 585,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 219,
+          "n_by_split": {
+            "train_fit": 199,
+            "naive_cal": 20,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.03165261651025927,
+            "naive_cal": 0.02861230329041488,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "solubility_aqsoldb_seed2": {
       "n": {
@@ -707,7 +1412,71 @@
           "75%": 0.6538,
           "max": 0.8889
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 829,
+          "scaffold": "",
+          "n": 2940,
+          "n_by_split": {
+            "train_fit": 2649,
+            "naive_cal": 291,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.4213456338476221,
+            "naive_cal": 0.41630901287553645,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 82,
+          "scaffold": "c1ccccc1",
+          "n": 1753,
+          "n_by_split": {
+            "train_fit": 1565,
+            "naive_cal": 188,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.24892635597264196,
+            "naive_cal": 0.26895565092989987,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 1244,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 219,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 219,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 0.21921921921921922,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        }
+      ]
     },
     "solubility_aqsoldb_seed3": {
       "n": {
@@ -766,7 +1535,72 @@
           "75%": 0.6562,
           "max": 0.8947
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 453,
+          "scaffold": "",
+          "n": 2940,
+          "n_by_split": {
+            "train_fit": 2637,
+            "naive_cal": 303,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.41943693335454113,
+            "naive_cal": 0.4334763948497854,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 362,
+          "scaffold": "c1ccccc1",
+          "n": 1753,
+          "n_by_split": {
+            "train_fit": 1570,
+            "naive_cal": 183,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.24972164784475903,
+            "naive_cal": 0.26180257510729615,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 301,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 219,
+          "n_by_split": {
+            "train_fit": 203,
+            "naive_cal": 16,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.03228885000795292,
+            "naive_cal": 0.022889842632331903,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "solubility_aqsoldb_seed4": {
       "n": {
@@ -825,7 +1659,72 @@
           "75%": 0.6526,
           "max": 0.8947
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 491,
+          "scaffold": "",
+          "n": 2940,
+          "n_by_split": {
+            "train_fit": 2651,
+            "naive_cal": 289,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.4216637505964689,
+            "naive_cal": 0.413447782546495,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 729,
+          "scaffold": "c1ccccc1",
+          "n": 1753,
+          "n_by_split": {
+            "train_fit": 1562,
+            "naive_cal": 191,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.24844918084937173,
+            "naive_cal": 0.2732474964234621,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 125,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 219,
+          "n_by_split": {
+            "train_fit": 194,
+            "naive_cal": 25,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.030857324638142197,
+            "naive_cal": 0.0357653791130186,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     },
     "solubility_aqsoldb_seed5": {
       "n": {
@@ -884,7 +1783,71 @@
           "75%": 0.6386,
           "max": 0.8889
         }
-      }
+      },
+      "largest_groups": [
+        {
+          "scaffold_id": 1325,
+          "scaffold": "",
+          "n": 2940,
+          "n_by_split": {
+            "train_fit": 0,
+            "naive_cal": 0,
+            "valid": 2940,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.0,
+            "naive_cal": 0.0,
+            "valid": 1.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "valid"
+          ]
+        },
+        {
+          "scaffold_id": 720,
+          "scaffold": "c1ccccc1",
+          "n": 1753,
+          "n_by_split": {
+            "train_fit": 1582,
+            "naive_cal": 171,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.3483814137855098,
+            "naive_cal": 0.3392857142857143,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        },
+        {
+          "scaffold_id": 7,
+          "scaffold": "c1ccc(-c2ccccc2)cc1",
+          "n": 219,
+          "n_by_split": {
+            "train_fit": 192,
+            "naive_cal": 27,
+            "valid": 0,
+            "test": 0
+          },
+          "share_of_split": {
+            "train_fit": 0.04228143580709095,
+            "naive_cal": 0.05357142857142857,
+            "valid": 0.0,
+            "test": 0.0
+          },
+          "in_splits": [
+            "train_fit",
+            "naive_cal"
+          ]
+        }
+      ]
     }
   }
 }
