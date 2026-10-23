@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from molcalib import config
-from molcalib.conformal import SIZE_MATCHED_VARIANTS, VARIANTS
+from molcalib.conformal import SIZE_MATCHED_VARIANTS, VARIANTS, composition_source
 
 # Reference palette (dataviz skill), slots 1-2, validated on the light surface.
 SURFACE, INK, INK_2, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#e6e5e1"
@@ -345,6 +345,134 @@ The comparisons whose test+cal CI excludes zero:
 """
 
 
+# ---------------------------------------------------------------- composition (DR-007)
+
+PARTS = ("train_fit", "naive_cal", "valid", "test")
+
+
+def _scaffold(s: str) -> str:
+    return f"`{s}`" if s else "`''` (acyclic)"
+
+
+def table_largest_groups(audit: dict, tasks=config.TASKS) -> str:
+    """Largest scaffold groups per task and seed, with their share of each partition."""
+    rows = []
+    for task in tasks:
+        for seed in config.SEEDS:
+            for rank, g in enumerate(audit["runs"][f"{task}_seed{seed}"]["largest_groups"], 1):
+                rows.append({"Task": TASK_NAME[task], "Seed": seed, "Rank": rank,
+                             "Scaffold": _scaffold(g["scaffold"]), "n": g["n"],
+                             **{f"% of {s}": _f(100 * g["share_of_split"][s], 1) for s in PARTS},
+                             "In": ", ".join(g["in_splits"])})
+    return _md(pd.DataFrame(rows))
+
+
+def table_sources(summary: pd.DataFrame, metric: str, sources, variants=VARIANTS) -> str:
+    """mean ± sd over seeds [95% CI, test only] per source."""
+    d = summary[summary.metric == metric]
+    rows = []
+    for task in config.TASKS:
+        for method in ("ensemble", "mcd"):
+            for variant in variants:
+                row = {"Task": TASK_NAME[task], "Method": METHOD_NAME[method], "Variant": variant}
+                for source in sources:
+                    r = d[(d.task == task) & (d.method == method) & (d.variant == variant)
+                          & (d.source == source)].iloc[0]
+                    row[source] = f"{_f(r['mean'])} ± {_f(r['sd'])} {_ci(r.ci_lo, r.ci_hi)}"
+                rows.append(row)
+    return _md(pd.DataFrame(rows))
+
+
+def table_composition_n(comp: pd.DataFrame) -> str:
+    """naive_cal molecules removed and remaining per threshold (min-max over seeds)."""
+    d = comp[(comp.method == "ensemble") & (comp.variant == "split")]
+    rows = []
+    for task in config.TASKS:
+        for t, g in d[d.task == task].groupby("threshold"):
+            rows.append({"Task": TASK_NAME[task], "Threshold": f"{t:.0%}",
+                         "naive_cal n": f"{g.n_naive_cal.min()}-{g.n_naive_cal.max()}",
+                         "Removed n": f"{g.n_removed.min()}-{g.n_removed.max()}",
+                         "Remaining n": f"{g.n_remaining.min()}-{g.n_remaining.max()}",
+                         "Removed scaffolds (any seed)": ", ".join(sorted(
+                             {s for v in g.removed_scaffolds.fillna("") for s in v.split()}))})
+    return _md(pd.DataFrame(rows))
+
+
+def table_seed_groups(by_group: pd.DataFrame, task: str) -> str:
+    """valid - naive_cal per seed group: mean diff [95% CI test+cal]."""
+    d = by_group[(by_group.task == task) & by_group.metric.isin(["coverage", "mean_width",
+                                                                  "winkler"])]
+    rows = []
+    for (method, variant, metric), g in d.groupby(["method", "variant", "metric"], sort=False):
+        g = g.set_index("seeds")
+        rows.append({"Method": METHOD_NAME[method], "Variant": variant, "Metric": metric,
+                     **{f"seeds {s}": f"{_f(g.at[s, 'mean_diff'], sign=True)} "
+                                      f"{_ci(g.at[s, 'ci_lo_cal'], g.at[s, 'ci_hi_cal'], sign=True)}"
+                        for s in config.SEED_GROUPS}})
+    return _md(pd.DataFrame(rows))
+
+
+def composition_section(summary, comp, by_group, audit) -> str:
+    task = "solubility_aqsoldb"
+    s5 = audit["runs"][f"{task}_seed5"]
+    n5 = s5["n"]
+    top5 = s5["largest_groups"][0]
+    n_trainval = n5["train_fit"] + n5["naive_cal"] + n5["valid"]
+    s1 = audit["runs"][f"{task}_seed1"]["n"]
+    main = composition_source(config.COMPOSITION_THRESHOLD)
+    others = [composition_source(t) for t in sorted(config.COMPOSITION_THRESHOLDS)]
+    return f"""## 8. Post-hoc check: calibration-set composition (DR-007)
+
+**Chosen after seeing the results above, and exploratory.** Bemis-Murcko scaffolds put all
+acyclic molecules into one group (scaffold `''`). No correction for multiple comparisons.
+
+### 8.1 Largest scaffold groups per split file
+
+Share of each partition in percent; "In" lists the partitions holding the group.
+
+{table_largest_groups(audit)}
+
+Why seed 5 differs: TDC's `get_train_valid_split` shuffles all scaffold groups and adds each to
+train while it fits within 87.5% of the train+valid pool; a group that does not fit goes to valid.
+For {TASK_NAME[task]} the {_scaffold(top5["scaffold"])} group holds {top5["n"]} of the
+{n_trainval} train+valid molecules. In seeds 1-4 it fell into train (valid has {s1["valid"]}
+molecules); in seed 5 it did not fit and went to valid, which then holds {n5["valid"]} molecules,
+{_f(100 * top5["share_of_split"]["valid"], 1)}% of them in this one group
+(train_fit {n5["train_fit"]}, naive_cal {n5["naive_cal"]}).
+
+### 8.2 naive_cal without large test-absent scaffold groups
+
+`naive_cal` is recalibrated without the scaffold groups that hold more than
+{config.COMPOSITION_THRESHOLD:.0%} of it and have no test molecule (source `{main}`). Models are
+unchanged. Each cell: mean ± sd over seeds [95% CI, test scaffold groups only].
+
+{table_composition_n(comp)}
+
+Coverage (target {TARGET:.0%}):
+
+{table_sources(summary, "coverage", ["naive_cal", main, "valid"])}
+
+Mean interval width:
+
+{table_sources(summary, "mean_width", ["naive_cal", main, "valid"])}
+
+Winkler score (lower is better):
+
+{table_sources(summary, "winkler", ["naive_cal", main, "valid"])}
+
+Threshold sensitivity, coverage:
+
+{table_sources(summary, "coverage", others)}
+
+### 8.3 valid − naive_cal by seed group, {TASK_NAME[task]}
+
+Mean difference [95% CI, test + calibration]. One-seed CIs use that seed's resamples only. All
+tasks are in `stats_paired_by_seed_group.csv`.
+
+{table_seed_groups(by_group, task)}
+"""
+
+
 def write_report(results: Path) -> Path:
     summary = pd.read_csv(results / "stats_summary.csv")
     paired = pd.read_csv(results / "stats_paired.csv")
@@ -352,6 +480,8 @@ def write_report(results: Path) -> Path:
     bins = pd.read_csv(results / "metrics_nn_bins.csv")
     abs_err = pd.read_csv(results / "metrics_abs_error.csv")
     sizes = pd.read_csv(results / "metrics_size_matched.csv")
+    comp = pd.read_csv(results / "metrics_composition.csv")
+    by_group = pd.read_csv(results / "stats_paired_by_seed_group.csv", dtype={"seeds": str})
     audit = json.loads((results / "split_audit.json").read_text())
     commit = summary["git_commit"].iloc[0]
 
@@ -431,7 +561,8 @@ no calibration step to resample).
 
 {table_compute(results, summary)}
 
-{post_hoc_section(summary, paired, abs_err, sizes)}"""
+{post_hoc_section(summary, paired, abs_err, sizes)}
+{composition_section(summary, comp, by_group, audit)}"""
     path = results / "summary.md"
     path.write_text(text)
     return path

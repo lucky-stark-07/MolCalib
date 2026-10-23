@@ -118,6 +118,19 @@ def test_calibration_resampling_widens_coverage_ci_and_keeps_pairing():
     assert len(wink) == 2 * 4 and wink.ci_lo_cal.notna().all()  # methods x variants
 
 
+def test_paired_by_seed_group_matches_paired_on_the_same_seeds():
+    preds = {("t", m, s): _pred(s, shift=0.1 * s) for m in ("ensemble", "mcd") for s in (1, 2, 3)}
+    per_run = _per_run(preds)
+    groups = stats.paired_by_seed_group(per_run, {"1-3": (1, 2, 3), "3": (3,)})
+    full = stats.paired(per_run)
+    full = full[full.comparison == "valid-naive_cal"].reset_index(drop=True)
+    g = groups[groups.seeds == "1-3"].drop(columns="seeds").reset_index(drop=True)
+    pd.testing.assert_frame_equal(g, full)
+    one = groups[groups.seeds == "3"]
+    assert (one.n_seeds == 1).all()
+    np.testing.assert_allclose(one.mean_diff, one.seed3)  # one seed: the mean is that seed
+
+
 def test_size_matched_stats_match_per_seed_metrics_and_skip_ensemble_mcd():
     from molcalib.conformal import size_matched_intervals
     from molcalib.metrics import size_matched_metrics

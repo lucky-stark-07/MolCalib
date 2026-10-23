@@ -8,7 +8,8 @@ paired. Two kinds of interval are reported for conformal metrics:
 - ci_lo_cal/ci_hi_cal: calibration scaffold groups are resampled too and the conformal
   quantiles refit in every resample (DR-005). Models stay fixed.
 Post hoc (DR-006): the Winkler score gets both intervals; the size-matched `valid` control
-(source "valid_sizematched") gets the test-only interval.
+(source "valid_sizematched") gets the test-only interval. The same holds for the composition
+control (DR-007, sources "naive_cal_dropNN").
 """
 
 import numpy as np
@@ -201,7 +202,7 @@ def paired(per_run: dict) -> pd.DataFrame:
     "ensemble-mcd": every planned metric, ensemble minus MC dropout.
     "valid-naive_cal": coverage, width, far-bin coverage and Winkler score (post hoc, DR-006)
     of each conformal variant, `valid` calibration minus `naive_cal` calibration, for each base
-    method. The size-matched control has no paired comparison.
+    method. The post-hoc controls (size-matched, composition) have no paired comparison.
     """
     rows = []
     for task in sorted({t for t, _, _ in per_run}):
@@ -209,7 +210,7 @@ def paired(per_run: dict) -> pd.DataFrame:
               for m in ("ensemble", "mcd")}
         seeds = sorted(set(by["ensemble"]) & set(by["mcd"]))
         for key in by["ensemble"][seeds[0]][0]:
-            if key[0] == "valid_sizematched" or key[2] == "winkler":  # post hoc, DR-006
+            if key[0] not in ("", *cf.SOURCES) or key[2] == "winkler":  # post hoc, DR-006/007
                 continue
             rows.append(_diff_row({"task": task, "comparison": "ensemble-mcd", "method": "",
                                    "source": key[0], "variant": key[1], "metric": key[2]},
@@ -224,3 +225,16 @@ def paired(per_run: dict) -> pd.DataFrame:
                                        "metric": key[2]},
                                       seeds, by[method], by[method], key, naive))
     return pd.DataFrame(rows)
+
+
+def paired_by_seed_group(per_run: dict, groups: dict) -> pd.DataFrame:
+    """"valid-naive_cal" rows of `paired` restricted to groups of seeds, e.g.
+    {"1-5": (1, 2, 3, 4, 5), "1-4": (1, 2, 3, 4), "5": (5,)} (post hoc, DR-007). sd is NaN for a
+    one-seed group; the bootstrap CIs use that seed's resamples only."""
+    out = []
+    for name, seeds in groups.items():
+        p = paired({k: v for k, v in per_run.items() if k[2] in seeds})
+        p = p[p.comparison == "valid-naive_cal"].copy()
+        p.insert(1, "seeds", name)
+        out.append(p)
+    return pd.concat(out, ignore_index=True)

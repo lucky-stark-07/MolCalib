@@ -102,22 +102,56 @@ def intervals_for_run(pred: pd.DataFrame, alpha: float = config.ALPHA) -> pd.Dat
     Calibration uses only the naive_cal or valid rows.
     """
     test = pred[pred["split"] == "test"]
+    return pd.concat([_intervals(pred[pred["split"] == source], test, source, alpha)
+                      for source in SOURCES], ignore_index=True)
+
+
+def _intervals(cal: pd.DataFrame, test: pd.DataFrame, source: str, alpha: float) -> pd.DataFrame:
+    """All four variants fit on the calibration rows `cal`, applied to `test` (long format)."""
+    fits = {
+        "split": fit_split(cal["y"], cal["mu"], alpha),
+        "normalized": fit_normalized(cal["y"], cal["mu"], cal["sigma_total"], alpha),
+        "mondrian": fit_mondrian(cal["y"], cal["mu"], cal["nn_dist"], alpha),
+        "mondrian_normalized": fit_mondrian_normalized(
+            cal["y"], cal["mu"], cal["sigma_total"], cal["nn_dist"], alpha
+        ),
+    }
     out = []
-    for source in SOURCES:
-        cal = pred[pred["split"] == source]
-        fits = {
-            "split": fit_split(cal["y"], cal["mu"], alpha),
-            "normalized": fit_normalized(cal["y"], cal["mu"], cal["sigma_total"], alpha),
-            "mondrian": fit_mondrian(cal["y"], cal["mu"], cal["nn_dist"], alpha),
-            "mondrian_normalized": fit_mondrian_normalized(
-                cal["y"], cal["mu"], cal["sigma_total"], cal["nn_dist"], alpha
-            ),
-        }
-        for variant, fit in fits.items():
-            lo, hi = fit.predict(test["mu"], test["sigma_total"], test["nn_dist"])
-            out.append(pd.DataFrame(
-                {"row": test.index, "source": source, "variant": variant, "lo": lo, "hi": hi}
-            ))
+    for variant, fit in fits.items():
+        lo, hi = fit.predict(test["mu"], test["sigma_total"], test["nn_dist"])
+        out.append(pd.DataFrame(
+            {"row": test.index, "source": source, "variant": variant, "lo": lo, "hi": hi}
+        ))
+    return pd.concat(out, ignore_index=True)
+
+
+# Post-hoc composition control (DR-007)
+def composition_source(threshold: float) -> str:
+    """Source label of naive_cal with dominant test-absent groups removed, e.g. naive_cal_drop05."""
+    return f"naive_cal_drop{round(threshold * 100):02d}"
+
+
+def dominant_test_absent_groups(pred: pd.DataFrame, threshold: float) -> list:
+    """scaffold_ids holding more than `threshold` of naive_cal and no test molecule.
+
+    naive_cal is drawn from train, which is scaffold-disjoint from test, so the second condition
+    always holds for these splits; it is checked anyway.
+    """
+    share = pred.loc[pred["split"] == "naive_cal", "scaffold_id"].value_counts(normalize=True)
+    in_test = set(pred.loc[pred["split"] == "test", "scaffold_id"])
+    return sorted(int(g) for g in share.index[share > threshold] if g not in in_test)
+
+
+def composition_controlled_intervals(pred: pd.DataFrame, thresholds=config.COMPOSITION_THRESHOLDS,
+                                     alpha: float = config.ALPHA) -> pd.DataFrame:
+    """Intervals (as intervals_for_run) recalibrated on naive_cal without the groups of
+    dominant_test_absent_groups, one source per threshold. Test rows are never calibration rows."""
+    test = pred[pred["split"] == "test"]
+    naive = pred[pred["split"] == "naive_cal"]
+    out = []
+    for t in thresholds:
+        cal = naive[~naive["scaffold_id"].isin(dominant_test_absent_groups(pred, t))]
+        out.append(_intervals(cal, test, composition_source(t), alpha))
     return pd.concat(out, ignore_index=True)
 
 

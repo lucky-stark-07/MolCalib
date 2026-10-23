@@ -11,7 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from molcalib.audit import DIST_SPLITS, audit_split
+from molcalib.audit import DIST_SPLITS, audit_split, largest_groups
 from molcalib.config import SEEDS, TASKS
 
 
@@ -31,7 +31,9 @@ def main() -> None:
     for task in TASKS:
         for seed in SEEDS:
             df = pd.read_csv(Path(args.splits) / f"{task}_seed{seed}.csv")
-            report["runs"][f"{task}_seed{seed}"] = audit_split(df)  # raises on any overlap
+            run = audit_split(df)  # raises on any overlap
+            run["largest_groups"] = largest_groups(df)  # post hoc, DR-007
+            report["runs"][f"{task}_seed{seed}"] = run
             frames[(task, seed)] = df
     (out / "split_audit.json").write_text(json.dumps(report, indent=2))
 

@@ -121,6 +121,44 @@ def test_size_matched_subsamples_are_valid_rows_of_naive_cal_size():
     np.testing.assert_array_equal(hi, hi2)
 
 
+def _composition_pred(seed=5):
+    """naive_cal: group 0 (50%, test-absent), group 1 (20%, also in test), 30 singletons."""
+    pred = _shuffled_pred(seed, n_naive=100, n_valid=60, n_test=40)
+    naive = pred.index[pred["split"] == "naive_cal"]
+    test = pred.index[pred["split"] == "test"]
+    pred["scaffold_id"] = np.arange(len(pred)) + 10
+    pred.loc[naive[:50], "scaffold_id"] = 0
+    pred.loc[naive[50:70], "scaffold_id"] = 1
+    pred.loc[test[:5], "scaffold_id"] = 1
+    return pred
+
+
+def test_dominant_groups_need_share_above_threshold_and_no_test_molecule():
+    pred = _composition_pred()
+    assert cf.dominant_test_absent_groups(pred, 0.05) == [0]  # group 1 is in test: kept
+    assert cf.dominant_test_absent_groups(pred, 0.5) == []  # share must exceed the threshold
+    assert cf.composition_source(0.05) == "naive_cal_drop05"
+    assert cf.composition_source(0.1) == "naive_cal_drop10"
+
+
+def test_composition_control_uses_only_kept_naive_cal_rows():
+    pred = _composition_pred()
+    a = cf.composition_controlled_intervals(pred, thresholds=(0.05, 0.9))
+    keep = pred[(pred["split"] != "naive_cal") | (pred["scaffold_id"] != 0)]
+    plain = cf.intervals_for_run(keep).query("source == 'naive_cal'").drop(columns="source")
+    got = a.query("source == 'naive_cal_drop05'").drop(columns="source")
+    pd.testing.assert_frame_equal(got.reset_index(drop=True), plain.reset_index(drop=True))
+    nothing_removed = a.query("source == 'naive_cal_drop90'").drop(columns="source")
+    full = cf.intervals_for_run(pred).query("source == 'naive_cal'").drop(columns="source")
+    pd.testing.assert_frame_equal(nothing_removed.reset_index(drop=True),
+                                  full.reset_index(drop=True))
+    pred2 = pred.copy()
+    pred2.loc[pred2["split"] == "test", "y"] = 1e6  # mock: garbage test labels
+    pred2.loc[(pred2["split"] == "naive_cal") & (pred2["scaffold_id"] == 0), "y"] = -1e6
+    pd.testing.assert_frame_equal(cf.composition_controlled_intervals(pred2, (0.05,)),
+                                  cf.composition_controlled_intervals(pred, (0.05,)))
+
+
 def test_size_matched_with_full_valid_reproduces_valid_result():
     from molcalib.metrics import evaluate_run, size_matched_metrics
 

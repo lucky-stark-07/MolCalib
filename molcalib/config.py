@@ -32,3 +32,11 @@ BOOT_SEED = 0
 # Post-hoc size-matched control (DR-006): `valid` subsampled to the naive_cal size
 SIZE_MATCH_R = 200
 SIZE_MATCH_SEED = 0
+
+# Post-hoc composition control (DR-007): drop naive_cal scaffold groups that hold more than this
+# share of naive_cal and have no test molecules. Main threshold first; the others are sensitivity.
+COMPOSITION_THRESHOLD = 0.05
+COMPOSITION_THRESHOLDS = (COMPOSITION_THRESHOLD, 0.02, 0.10)
+N_LARGEST_GROUPS = 3  # split audit: largest scaffold groups reported per task and seed
+# valid - naive_cal by seed group; in seed 5 the TDC split differs (DR-007)
+SEED_GROUPS = {"1-5": (1, 2, 3, 4, 5), "1-4": (1, 2, 3, 4), "5": (5,)}
