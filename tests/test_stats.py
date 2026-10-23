@@ -114,3 +114,32 @@ def test_calibration_resampling_widens_coverage_ci_and_keeps_pairing():
     pair = stats.paired(per_run)
     same = pair[(pair.comparison == "ensemble-mcd") & pair.ci_lo_cal.notna()]
     assert len(same) and np.allclose(same[["ci_lo_cal", "ci_hi_cal"]].to_numpy(), 0)
+    wink = pair[(pair.comparison == "valid-naive_cal") & (pair.metric == "winkler")]
+    assert len(wink) == 2 * 4 and wink.ci_lo_cal.notna().all()  # methods x variants
+
+
+def test_size_matched_stats_match_per_seed_metrics_and_skip_ensemble_mcd():
+    from molcalib.conformal import size_matched_intervals
+    from molcalib.metrics import size_matched_metrics
+
+    per_run, w = {}, None
+    for m in ("ensemble", "mcd"):
+        for s in (1, 2):
+            pred = _bigpred(s)
+            iv = intervals_for_run(pred)
+            sm = size_matched_intervals(pred, r=20, seed=[0, s], n=100)
+            test = pred[pred["split"] == "test"]
+            w = stats.group_weights(test["scaffold_id"], 200, 0) if w is None else w
+            full = stats.run_metrics(test, iv, np.ones((1, len(test))), sm)
+            per_run[("t", m, s)] = (full, stats.run_metrics(test, iv, w, sm))
+            for r in size_matched_metrics(pred, sm, {}).itertuples():
+                for metric in ("coverage", "mean_width", "winkler"):
+                    assert np.isclose(full[("valid_sizematched", r.variant, metric)][0],
+                                      getattr(r, metric))
+    summ = stats.summarize(per_run)
+    sm_rows = summ[summ.source == "valid_sizematched"]
+    assert len(sm_rows) == 2 * 2 * 3  # methods x variants x metrics
+    assert ((sm_rows.ci_lo <= sm_rows["mean"]) & (sm_rows["mean"] <= sm_rows.ci_hi)).all()
+    pair = stats.paired(per_run)
+    assert "valid_sizematched" not in set(pair.source.dropna())
+    assert set(pair[pair.metric == "winkler"].comparison) == {"valid-naive_cal"}

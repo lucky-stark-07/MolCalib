@@ -1,7 +1,9 @@
 """Laptop: conformal intervals (T7), test metrics (T8), statistics (T9) and report (T10).
 
-Writes cache/conformal/*.parquet, results/metrics_*.csv, results/stats_*.csv,
-results/summary.md and results/fig_*.png. `--report-only` rebuilds the report from results/.
+Also the post-hoc checks of DR-006 (size-matched `valid` control, Winkler score, median
+absolute error per split). Writes cache/conformal/*.parquet, results/metrics_*.csv,
+results/stats_*.csv, results/summary.md and results/fig_*.png. `--report-only` rebuilds the
+report from results/.
 """
 
 import argparse
@@ -12,8 +14,8 @@ import numpy as np
 import pandas as pd
 
 from molcalib import config
-from molcalib.conformal import intervals_for_run
-from molcalib.metrics import evaluate_run
+from molcalib.conformal import intervals_for_run, size_matched_intervals
+from molcalib.metrics import evaluate_run, median_abs_error, size_matched_metrics
 from molcalib.report import write_report
 from molcalib.runner import git_commit
 from molcalib.stats import (
@@ -27,6 +29,7 @@ from molcalib.stats import (
 log = logging.getLogger(__name__)
 
 TABLES = ("point", "selective", "gaussian", "conformal", "nn_bins")
+POST_HOC = ("size_matched", "abs_error")  # DR-006
 
 
 def main() -> None:
@@ -44,7 +47,7 @@ def main() -> None:
     conf_dir.mkdir(parents=True, exist_ok=True)
     res_dir.mkdir(parents=True, exist_ok=True)
 
-    parts = {t: [] for t in TABLES}
+    parts = {t: [] for t in TABLES + POST_HOC}
     per_run = {}
     for task in config.TASKS:
         weights = None  # one set of scaffold-group resamples per task, shared by all runs
@@ -60,12 +63,16 @@ def main() -> None:
                 keys = {"task": task, "seed": seed, "method": method}
                 for name, df in zip(TABLES, evaluate_run(pred, iv, keys)):
                     parts[name].append(df)
+                # same subsamples for ensemble and MC dropout of one seed
+                sm = size_matched_intervals(pred, seed=[config.SIZE_MATCH_SEED, seed])
+                parts["size_matched"].append(size_matched_metrics(pred, sm, keys))
+                parts["abs_error"].append(median_abs_error(pred, keys))
                 test = pred[pred["split"] == "test"]
                 if weights is None:
                     weights = group_weights(test["scaffold_id"])
                 per_run[(task, method, seed)] = (
-                    run_metrics(test, iv, np.ones((1, len(test)))),
-                    run_metrics(test, iv, weights),
+                    run_metrics(test, iv, np.ones((1, len(test))), sm),
+                    run_metrics(test, iv, weights, sm),
                     conformal_boot_with_cal(pred, weights, seed, config.ALPHA),
                 )
                 log.info("%s seed %d %s: done", task, seed, method)

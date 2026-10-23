@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm, spearmanr
 
+from molcalib import config
 from molcalib.conformal import nn_bin_edges
 
 GAUSS_LEVELS = np.round(np.arange(0.1, 1.0, 0.1), 1)  # 0.1 ... 0.9
@@ -51,6 +52,16 @@ def selective_rmse(y, mu, sigma, keep_fracs=KEEP_FRACS) -> dict[float, float]:
     return out
 
 
+def winkler_scores(y, lo, hi, alpha: float = config.ALPHA) -> np.ndarray:
+    """Per-molecule Winkler (interval) score, post hoc (DR-006):
+    (hi - lo) + (2/alpha)(lo - y)[y < lo] + (2/alpha)(y - hi)[y > hi]. Lower is better.
+    An infinite interval scores inf (never a miss, so no inf * 0)."""
+    y, lo, hi = (np.asarray(a, dtype=float) for a in (y, lo, hi))
+    below = np.where(y < lo, lo - y, 0.0)
+    above = np.where(y > hi, y - hi, 0.0)
+    return (hi - lo) + (2 / alpha) * (below + above)
+
+
 def interval_metrics(y, lo, hi) -> dict:
     y, lo, hi = (np.asarray(a, dtype=float) for a in (y, lo, hi))
     width = hi - lo
@@ -59,7 +70,41 @@ def interval_metrics(y, lo, hi) -> dict:
         "mean_width": float(np.mean(width)),
         "median_width": float(np.median(width)),
         "n_infinite": int(np.isinf(width).sum()),
+        "winkler": float(np.mean(winkler_scores(y, lo, hi))),
     }
+
+
+def size_matched_per_molecule(y, size_matched: dict) -> dict:
+    """{variant: {metric: array(n_test)}}: coverage hit, width and Winkler score of each test
+    molecule, averaged over the size-matched subsamples (DR-006). The mean over molecules is the
+    mean over subsamples of the test-set metric."""
+    y = np.asarray(y, dtype=float)
+    out = {}
+    for variant, (lo, hi) in size_matched.items():
+        out[variant] = {"coverage": ((y >= lo) & (y <= hi)).mean(axis=0),
+                        "mean_width": (hi - lo).mean(axis=0),
+                        "winkler": winkler_scores(y, lo, hi).mean(axis=0)}
+    return out
+
+
+def size_matched_metrics(pred: pd.DataFrame, size_matched: dict, keys: dict) -> pd.DataFrame:
+    """One row per variant: test metrics averaged over the size-matched subsamples (DR-006)."""
+    y = pred.loc[pred["split"] == "test", "y"]
+    n_cal = int((pred["split"] == "naive_cal").sum())
+    return pd.DataFrame([
+        {**keys, "source": "valid_sizematched", "variant": v, "n_cal": n_cal,
+         "n_subsamples": len(size_matched[v][0]), **{m: float(np.mean(a)) for m, a in d.items()}}
+        for v, d in size_matched_per_molecule(y, size_matched).items()
+    ])
+
+
+def median_abs_error(pred: pd.DataFrame, keys: dict) -> pd.DataFrame:
+    """Median |y - mu| on naive_cal, valid and test (post-hoc descriptive check, DR-006)."""
+    return pd.DataFrame([
+        {**keys, "split": s, "n": int(m.sum()),
+         "median_abs_error": float(np.median(np.abs(pred.loc[m, "y"] - pred.loc[m, "mu"])))}
+        for s in ("naive_cal", "valid", "test") for m in [pred["split"] == s]
+    ])
 
 
 def coverage_by_nn_bin(y, lo, hi, nn, n_bins=N_BINS) -> list[dict]:
@@ -73,7 +118,8 @@ def coverage_by_nn_bin(y, lo, hi, nn, n_bins=N_BINS) -> list[dict]:
         rows.append({
             "bin": b, "n": int(m.sum()),
             "nn_min": float(nn[m].min()), "nn_max": float(nn[m].max()),
-            **{k: v for k, v in interval_metrics(y[m], lo[m], hi[m]).items() if k != "median_width"},
+            **{k: v for k, v in interval_metrics(y[m], lo[m], hi[m]).items()
+               if k not in ("median_width", "winkler")},
         })
     return rows
 

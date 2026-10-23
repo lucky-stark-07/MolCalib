@@ -119,3 +119,39 @@ def intervals_for_run(pred: pd.DataFrame, alpha: float = config.ALPHA) -> pd.Dat
                 {"row": test.index, "source": source, "variant": variant, "lo": lo, "hi": hi}
             ))
     return pd.concat(out, ignore_index=True)
+
+
+# Post-hoc size-matched control (DR-006)
+SIZE_MATCHED_VARIANTS = ("split", "normalized")
+
+
+def valid_subsamples(pred: pd.DataFrame, n: int, r: int, seed) -> np.ndarray:
+    """(r, n) index labels of `valid` rows; each row is one subsample drawn without replacement."""
+    valid = pred.index[pred["split"] == "valid"].to_numpy()
+    rng = np.random.default_rng(seed)
+    return np.stack([rng.choice(valid, n, replace=False) for _ in range(r)])
+
+
+def size_matched_intervals(pred: pd.DataFrame, r: int = config.SIZE_MATCH_R, seed=None,
+                           n: int | None = None, alpha: float = config.ALPHA) -> dict:
+    """Split and normalized conformal refit on r subsamples of `valid` with n rows each (default:
+    the naive_cal size of this prediction file).
+
+    Returns {variant: (lo, hi)} for test rows, each of shape (r, n_test).
+    """
+    test = pred[pred["split"] == "test"]
+    n = int((pred["split"] == "naive_cal").sum()) if n is None else n
+    seed = config.SIZE_MATCH_SEED if seed is None else seed
+    los = {v: [] for v in SIZE_MATCHED_VARIANTS}
+    his = {v: [] for v in SIZE_MATCHED_VARIANTS}
+    for idx in valid_subsamples(pred, n, r, seed):
+        cal = pred.loc[idx]
+        fits = {
+            "split": fit_split(cal["y"], cal["mu"], alpha),
+            "normalized": fit_normalized(cal["y"], cal["mu"], cal["sigma_total"], alpha),
+        }
+        for variant, fit in fits.items():
+            lo, hi = fit.predict(test["mu"], test["sigma_total"])
+            los[variant].append(lo)
+            his[variant].append(hi)
+    return {v: (np.stack(los[v]), np.stack(his[v])) for v in SIZE_MATCHED_VARIANTS}

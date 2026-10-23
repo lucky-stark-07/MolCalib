@@ -28,3 +28,7 @@ def mcd_seed(split_seed: int) -> int:
 # Statistics (T9): scaffold-cluster bootstrap over test scaffold groups
 N_BOOT = 1000
 BOOT_SEED = 0
+
+# Post-hoc size-matched control (DR-006): `valid` subsampled to the naive_cal size
+SIZE_MATCH_R = 200
+SIZE_MATCH_SEED = 0

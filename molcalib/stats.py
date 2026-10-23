@@ -7,6 +7,8 @@ paired. Two kinds of interval are reported for conformal metrics:
   quantiles are held fixed.
 - ci_lo_cal/ci_hi_cal: calibration scaffold groups are resampled too and the conformal
   quantiles refit in every resample (DR-005). Models stay fixed.
+Post hoc (DR-006): the Winkler score gets both intervals; the size-matched `valid` control
+(source "valid_sizematched") gets the test-only interval.
 """
 
 import numpy as np
@@ -16,7 +18,7 @@ from scipy.stats import norm, spearmanr
 from molcalib import config
 from molcalib import conformal as cf
 from molcalib.conformal import nn_bin_edges
-from molcalib.metrics import GAUSS_LEVELS
+from molcalib.metrics import GAUSS_LEVELS, size_matched_per_molecule, winkler_scores
 
 CI = (2.5, 97.5)
 
@@ -63,10 +65,12 @@ def wspearman(w: np.ndarray, a: np.ndarray, b: np.ndarray) -> np.ndarray:
     return np.array(out)
 
 
-def run_metrics(test: pd.DataFrame, intervals: pd.DataFrame, w: np.ndarray) -> dict:
+def run_metrics(test: pd.DataFrame, intervals: pd.DataFrame, w: np.ndarray,
+                size_matched: dict | None = None) -> dict:
     """Metric values for one run under weights w: {(source, variant, metric): array(len(w))}.
 
     Point metrics use source = variant = "". With w = ones((1, n)) this reproduces T8.
+    size_matched: output of conformal.size_matched_intervals, reported as "valid_sizematched".
     """
     y, mu, sg = (test[c].to_numpy(float) for c in ("y", "mu", "sigma_total"))
     err = y - mu
@@ -97,6 +101,10 @@ def run_metrics(test: pd.DataFrame, intervals: pd.DataFrame, w: np.ndarray) -> d
         out[(source, variant, "coverage")] = wmean(w, hit)
         out[(source, variant, "mean_width")] = wmean(w, hi - lo)
         out[(source, variant, "coverage_far_bin")] = wmean(w, hit * far) / wmean(w, far)
+        out[(source, variant, "winkler")] = wmean(w, winkler_scores(y, lo, hi))
+    for variant, d in size_matched_per_molecule(y, size_matched or {}).items():
+        for metric, x in d.items():
+            out[("valid_sizematched", variant, metric)] = wmean(w, x)
     return out
 
 
@@ -107,7 +115,8 @@ def conformal_boot_with_cal(pred: pd.DataFrame, w_test: np.ndarray, seed: int,
     Resample b uses test weights w_test[b] and a scaffold-group resample of each calibration
     set. Calibration resamples depend on (BOOT_SEED, split seed, source) only, so the ensemble
     and MC dropout runs of one seed share them (paired comparison).
-    Returns {(source, variant, metric): array(n_boot)} for coverage, mean_width, coverage_far_bin.
+    Returns {(source, variant, metric): array(n_boot)} for coverage, mean_width, coverage_far_bin
+    and winkler.
     """
     test = pred[pred["split"] == "test"]
     y, mu, sg, nn = (test[c].to_numpy(float) for c in ("y", "mu", "sigma_total", "nn_dist"))
@@ -120,7 +129,7 @@ def conformal_boot_with_cal(pred: pd.DataFrame, w_test: np.ndarray, seed: int,
         cy, cmu, csg, cnn = (cal[c].to_numpy(float) for c in ("y", "mu", "sigma_total", "nn_dist"))
         w_cal = group_weights(cal["scaffold_id"], n_boot, [config.BOOT_SEED, seed, k])
         res = {(v, m): np.empty(n_boot) for v in cf.VARIANTS
-               for m in ("coverage", "mean_width", "coverage_far_bin")}
+               for m in ("coverage", "mean_width", "coverage_far_bin", "winkler")}
         for b in range(n_boot):
             i = np.repeat(np.arange(len(cal)), w_cal[b].astype(int))
             fits = {
@@ -137,6 +146,7 @@ def conformal_boot_with_cal(pred: pd.DataFrame, w_test: np.ndarray, seed: int,
                 res[(v, "coverage")][b] = wmean(wb, hit)[0]
                 res[(v, "mean_width")][b] = wmean(wb, hi - lo)[0]
                 res[(v, "coverage_far_bin")][b] = (wmean(wb, hit * far) / wmean(wb, far))[0]
+                res[(v, "winkler")][b] = wmean(wb, winkler_scores(y, lo, hi))[0]
         out.update({(source, v, m): arr for (v, m), arr in res.items()})
     return out
 
@@ -188,9 +198,10 @@ def _diff_row(tags, seeds, a, b, key_a, key_b) -> dict:
 def paired(per_run: dict) -> pd.DataFrame:
     """Paired per-seed differences with bootstrap CIs.
 
-    "ensemble-mcd": every metric, ensemble minus MC dropout.
-    "valid-naive_cal": coverage, width and far-bin coverage of each conformal variant, `valid`
-    calibration minus `naive_cal` calibration, for each base method.
+    "ensemble-mcd": every planned metric, ensemble minus MC dropout.
+    "valid-naive_cal": coverage, width, far-bin coverage and Winkler score (post hoc, DR-006)
+    of each conformal variant, `valid` calibration minus `naive_cal` calibration, for each base
+    method. The size-matched control has no paired comparison.
     """
     rows = []
     for task in sorted({t for t, _, _ in per_run}):
@@ -198,6 +209,8 @@ def paired(per_run: dict) -> pd.DataFrame:
               for m in ("ensemble", "mcd")}
         seeds = sorted(set(by["ensemble"]) & set(by["mcd"]))
         for key in by["ensemble"][seeds[0]][0]:
+            if key[0] == "valid_sizematched" or key[2] == "winkler":  # post hoc, DR-006
+                continue
             rows.append(_diff_row({"task": task, "comparison": "ensemble-mcd", "method": "",
                                    "source": key[0], "variant": key[1], "metric": key[2]},
                                   seeds, by["ensemble"], by["mcd"], key, key))

@@ -49,6 +49,25 @@ def test_interval_and_bin_coverage():
     assert rows[0]["coverage"] == pytest.approx(0.5)
 
 
+def test_winkler_score_hand_computed():
+    y = np.array([0.0, 5.0, -3.0])
+    lo = np.array([-1.0, 0.0, -2.0])
+    hi = np.array([1.0, 4.0, 2.0])
+    # inside: width 2; above by 1: 4 + 20 * 1; below by 1: 4 + 20 * 1  (2 / alpha = 20)
+    np.testing.assert_allclose(mt.winkler_scores(y, lo, hi, alpha=0.1), [2.0, 24.0, 24.0])
+    assert mt.interval_metrics(y, lo, hi)["winkler"] == pytest.approx(50 / 3)
+    inf = mt.winkler_scores([1.0], [-np.inf], [np.inf])  # infinite interval: inf, not NaN
+    assert np.isinf(inf).all()
+
+
+def test_median_abs_error_per_split():
+    pred = pd.DataFrame({"split": ["naive_cal"] * 3 + ["valid"] * 2 + ["test"] * 2,
+                         "y": [1.0, 2.0, 3.0, 0.0, 0.0, 5.0, 5.0],
+                         "mu": [1.0, 1.0, 1.0, 1.0, 3.0, 4.0, 4.0]})
+    d = mt.median_abs_error(pred, {"task": "t"}).set_index("split")["median_abs_error"]
+    assert d.to_dict() == {"naive_cal": 1.0, "valid": 2.0, "test": 1.0}
+
+
 def test_evaluate_run_shapes():
     rng = np.random.default_rng(1)
     n = 60

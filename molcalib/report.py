@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from molcalib import config
-from molcalib.conformal import VARIANTS
+from molcalib.conformal import SIZE_MATCHED_VARIANTS, VARIANTS
 
 # Reference palette (dataviz skill), slots 1-2, validated on the light surface.
 SURFACE, INK, INK_2, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#e6e5e1"
@@ -241,11 +241,117 @@ def table_audit(audit: dict) -> str:
     return _md(pd.DataFrame(rows))
 
 
+# ---------------------------------------------------------------- post-hoc checks (DR-006)
+
+
+def table_size_matched(summary: pd.DataFrame, metric: str) -> str:
+    """naive_cal, full valid and size-matched valid: mean ± sd over seeds [95% CI, test only]."""
+    d = summary[summary.metric == metric]
+    rows = []
+    for task in config.TASKS:
+        for method in ("ensemble", "mcd"):
+            for variant in SIZE_MATCHED_VARIANTS:
+                row = {"Task": TASK_NAME[task], "Method": METHOD_NAME[method], "Variant": variant}
+                for source in ("naive_cal", "valid", "valid_sizematched"):
+                    r = d[(d.task == task) & (d.method == method) & (d.variant == variant)
+                          & (d.source == source)].iloc[0]
+                    row[source] = f"{_f(r['mean'])} ± {_f(r['sd'])} {_ci(r.ci_lo, r.ci_hi)}"
+                rows.append(row)
+    return _md(pd.DataFrame(rows))
+
+
+def table_abs_error(abs_err: pd.DataFrame) -> str:
+    """Median |y - mu| per split: mean ± sd over seeds."""
+    g = abs_err.groupby(["task", "method", "split"])["median_abs_error"].agg(["mean", "std"])
+    rows = []
+    for task in config.TASKS:
+        for method in ("ensemble", "mcd"):
+            rows.append({"Task": TASK_NAME[task], "Method": METHOD_NAME[method],
+                         **{s: f"{_f(g.at[(task, method, s), 'mean'], 2)} ± "
+                               f"{_f(g.at[(task, method, s), 'std'], 2)}"
+                            for s in ("naive_cal", "valid", "test")}})
+    return _md(pd.DataFrame(rows))
+
+
+def _excludes_zero(p: pd.DataFrame) -> pd.Series:
+    return (p.ci_lo_cal > 0) | (p.ci_hi_cal < 0)
+
+
+def table_comparison_counts(paired: pd.DataFrame) -> str:
+    """valid - naive_cal comparisons per metric and how many have a test+cal CI excluding zero."""
+    d = paired[paired.comparison == "valid-naive_cal"]
+    rows = [{"Metric": m, "Comparisons": len(g), "test+cal CI excludes 0": int(_excludes_zero(g).sum())}
+            for m, g in d.groupby("metric", sort=False)]
+    rows.append({"Metric": "all", "Comparisons": len(d),
+                 "test+cal CI excludes 0": int(_excludes_zero(d).sum())})
+    return _md(pd.DataFrame(rows))
+
+
+def post_hoc_section(summary: pd.DataFrame, paired: pd.DataFrame, abs_err: pd.DataFrame,
+                     sizes: pd.DataFrame) -> str:
+    vn = paired[paired.comparison == "valid-naive_cal"]
+    n_sub = int(sizes["n_subsamples"].iloc[0])
+    return f"""## 7. Post-hoc robustness checks (DR-006)
+
+**These checks were chosen after seeing the results above.** They are not part of the planned
+analysis and are reported as exploratory. No correction for multiple comparisons is applied.
+
+### 7.1 Size-matched control: `valid` subsampled to the `naive_cal` size
+
+For each task, seed and base method, split and normalized conformal are refit on {n_sub} random
+subsamples of `valid` (without replacement) with as many molecules as that seed's `naive_cal`;
+the table shows the test metric averaged over subsamples. Each cell: mean ± sd over seeds,
+[95% CI, test scaffold groups only]. The CI holds models and calibration sets fixed.
+
+Coverage (target {TARGET:.0%}):
+
+{table_size_matched(summary, "coverage")}
+
+Mean interval width:
+
+{table_size_matched(summary, "mean_width")}
+
+### 7.2 Winkler (interval) score, alpha = {config.ALPHA}
+
+Mean over test molecules of (hi − lo) + (2/alpha)(lo − y)[y < lo] + (2/alpha)(y − hi)[y > hi];
+lower is better. It rewards narrow intervals and penalises misses by their distance. Each cell:
+mean, 95% CI (test), 95% CI (test + calibration).
+
+{table_conformal(summary, "winkler")}
+
+`valid` minus `naive_cal` (negative = `valid` calibration scores better):
+
+{table_paired(paired, "valid-naive_cal", ["winkler"])}
+
+### 7.3 Median absolute error per split (descriptive)
+
+Median |y − μ| on each split, mean ± sd over seeds. No test is applied.
+
+{table_abs_error(abs_err)}
+
+### 7.4 Number of valid − naive_cal comparisons
+
+`stats_paired.csv` holds {len(paired)} paired comparisons
+({int((paired.comparison == "ensemble-mcd").sum())} deep ensemble − MC dropout,
+{len(vn)} `valid` − `naive_cal`). Of the `valid` − `naive_cal` comparisons,
+{int(_excludes_zero(vn).sum())} have a 95% test+cal CI that excludes zero, with no
+multiple-comparison correction:
+
+{table_comparison_counts(paired)}
+
+The comparisons whose test+cal CI excludes zero:
+
+{table_paired(vn[_excludes_zero(vn)], "valid-naive_cal", list(vn.metric.unique()))}
+"""
+
+
 def write_report(results: Path) -> Path:
     summary = pd.read_csv(results / "stats_summary.csv")
     paired = pd.read_csv(results / "stats_paired.csv")
     sel = pd.read_csv(results / "metrics_selective.csv")
     bins = pd.read_csv(results / "metrics_nn_bins.csv")
+    abs_err = pd.read_csv(results / "metrics_abs_error.csv")
+    sizes = pd.read_csv(results / "metrics_size_matched.csv")
     audit = json.loads((results / "split_audit.json").read_text())
     commit = summary["git_commit"].iloc[0]
 
@@ -324,7 +430,8 @@ no calibration step to resample).
 ## 6. Compute cost (Kaggle, 2 × T4)
 
 {table_compute(results, summary)}
-"""
+
+{post_hoc_section(summary, paired, abs_err, sizes)}"""
     path = results / "summary.md"
     path.write_text(text)
     return path
