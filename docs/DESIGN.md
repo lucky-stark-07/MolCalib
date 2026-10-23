@@ -74,3 +74,34 @@
   or for the median errors (adds comparisons to an analysis that already has no
   multiple-comparison correction).
 - **Cost in hours:** 1.5.
+
+### DR-007: post-hoc check of calibration-set composition
+- **Decision:** Chosen after DR-006, from a finding on the splits; post hoc and exploratory.
+  Splits and models are unchanged.
+  (a) The split audit (`results/split_audit.json`) lists the 3 largest scaffold groups per task
+  and seed: scaffold SMILES (recomputed from the molecules and checked to be one scaffold per
+  group), size, molecules and share of each partition, and the partitions that hold the group.
+  (b) Composition control: `naive_cal` is recalibrated without the scaffold groups that hold more
+  than COMPOSITION_THRESHOLD = 5% of `naive_cal` and have no test molecule (source
+  "naive_cal_drop05"), for all tasks, base methods and conformal variants. 2% and 10% are always
+  reported too (COMPOSITION_THRESHOLDS), so the threshold choice is visible rather than decided
+  after looking. Reported: coverage, mean width, Winkler score with test-only CIs, and the
+  `naive_cal` molecules removed and remaining per seed. "No test molecule" always holds here,
+  because `naive_cal` comes from train, which is scaffold-disjoint from test; it is checked anyway.
+  (c) The `valid` − `naive_cal` paired comparisons are repeated for seeds 1-4 and seed 5 alone
+  (`stats_paired_by_seed_group.csv`, both CIs). A one-seed CI uses that seed's resamples only.
+- **Why:** on AqSolDB, Bemis-Murcko scaffolds put all acyclic molecules into one group (scaffold
+  "", 2940 molecules) next to benzene (1753). Neither is in test. In seeds 1-4 they are about
+  two-thirds of `naive_cal` and absent from `valid`; in seed 5 `valid` is the acyclic group only.
+  So `naive_cal` and `valid` differ in composition, not only in scaffold overlap with train.
+  Seed 5: TDC's `get_train_valid_split` calls `create_scaffold_split` with fractions
+  [0.875, 0.125, 0]. With a test fraction of 0 every scaffold group counts as "big", so all groups
+  are shuffled together and each is added to train while it fits within 87.5% of train+valid;
+  a group that does not fit goes to valid. In seed 5 the acyclic group (37% of train+valid) came
+  too late to fit, went to valid, and every other group fit into train.
+- **Alternatives rejected:** removing exactly the two groups named in the finding (a rule tied
+  to one task; the share rule applies to all tasks, and at 10% it removes exactly those two
+  groups wherever they occur in AqSolDB's `naive_cal`). Dropping seed 5 (no run is discarded; it is reported separately instead). Re-splitting or
+  retraining (out of scope for a post-hoc check). Paired tests of the composition control
+  (more uncorrected comparisons).
+- **Cost in hours:** 1.5.

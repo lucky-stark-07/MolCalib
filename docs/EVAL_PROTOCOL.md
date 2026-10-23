@@ -90,3 +90,13 @@ Made after seeing results; reported alongside, not instead of, the planned analy
    test-only CI is kept unchanged.
 3. Metric definitions not fixed by the plan (DR-003) were chosen while implementing T8, before
    the full metrics were inspected.
+4. Robustness checks of the calibration-source result (DR-006), added after review of the full
+   results: a size-matched control (`valid` subsampled to the `naive_cal` size, 200 subsamples),
+   the Winkler interval score (α = 0.1) for every conformal variant and calibration source, and
+   the median |y − μ| on `naive_cal`, `valid` and test (descriptive). The planned analyses are
+   unchanged.
+5. Calibration-set composition checks (DR-007), added after DR-006: the split audit reports the
+   largest scaffold groups per task and seed; `naive_cal` is recalibrated without the scaffold
+   groups that hold more than 5% of it and have no test molecules (2% and 10% as sensitivity);
+   and `valid` − `naive_cal` is reported for seeds 1-4 and seed 5 separately. Splits and models
+   are unchanged; these controls have test-only CIs.
