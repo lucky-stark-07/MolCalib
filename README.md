@@ -1,9 +1,9 @@
 # MolCalib
 
-**TL;DR** (exploratory, post hoc; deep ensemble, split conformal, target coverage 0.90, mean of 5 seeds; 95% CIs resample test scaffold groups, and for differences also calibration groups)
-1. Solubility: calibrating on a random hold-out of training molecules gave 0.866 [0.837, 0.888] test coverage, but about two-thirds of that hold-out is two generic scaffold groups (acyclic molecules, benzene) that never occur in test; without them it gave 0.903 [0.878, 0.922], close to the scaffold-disjoint validation set's 0.918 [0.896, 0.935].
-2. Calibrating on the validation set gave wider intervals and no better Winkler interval score (difference +0.087 [−0.188, +0.222]), and its coverage gain is uneven across seeds: +0.042 [+0.000, +0.079] in seeds 1-4, +0.092 [+0.034, +0.140] in seed 5, whose validation set holds only acyclic molecules.
-3. No coverage difference was detected on Caco-2 or lipophilicity; 14 of 96 calibration-source comparisons have a CI excluding zero, with no multiple-comparison correction.
+**TL;DR** (exploratory, post hoc; deep ensemble, split conformal, target coverage 0.90, mean of 5 seeds; brackets are 95% CIs, and each line says which kind)
+1. Solubility, CIs resampling test scaffold groups only: calibrating on a random hold-out of training molecules gave 0.866 [0.837, 0.888] test coverage, but about two-thirds of that hold-out is two generic scaffold groups (acyclic molecules, benzene) that never occur in test; without them it gave 0.903 [0.878, 0.922], close to the validation set's 0.918 [0.896, 0.935].
+2. Validation minus hold-out, CIs resampling test and calibration scaffold groups: no better Winkler interval score (+0.087 [−0.188, +0.222]) despite wider intervals, and the coverage gain is uneven across seeds: +0.042 [+0.000, +0.079] in seeds 1-4, +0.092 [+0.034, +0.140] in seed 5, whose validation set holds only acyclic molecules.
+3. No coverage difference was detected on Caco-2 or lipophilicity; 14 of 96 calibration-source comparisons have a test + calibration CI excluding zero, with no multiple-comparison correction.
 
 An evaluation of established uncertainty quantification (UQ) methods for molecular property
 prediction under scaffold shift: deep ensembles, MC dropout, and split / normalized / Mondrian
